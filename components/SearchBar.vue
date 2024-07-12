@@ -9,13 +9,13 @@ const props = defineProps<{
 
 // Определение эмитов для события 'input' с значением типа string
 const emit = defineEmits<{
-  (event: 'input', value: string): void; // Определение эмита события 'input' с аргументом типа string
+  (event: 'input', value: string): void;
 }>();
 
 // Обработка события ввода и эмит события 'input' с переданным значением
 const handleInput = (event: Event) => {
   const target = event.target as HTMLInputElement;
-  emit('input', target.value); // Эмит события 'input' с введенным значением
+  emit('input', target.value);
 };
 </script>
 

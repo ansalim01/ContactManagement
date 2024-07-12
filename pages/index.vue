@@ -153,13 +153,11 @@ function saveContactChanges (updatedContact: InterfaceContactItem) {
 function deleteContact (item: InterfaceContactItem) {
   const index = contactList.value.findIndex(c => c.key === item.key);
   if (index !== -1) {
-    // contactList.value.splice(index, 1);
     contactList.value = contactList.value.filter(p => p.key !== item.key);
     saveContactsToLocalStorage(contactList.value);
   }
 }
 
-// Функция для добавления нового контакта
 function addContact () {
   typeModal.value = ModalType.Add;
   formaContact.value = {
@@ -172,7 +170,6 @@ function addContact () {
   showModal.value = true;
 }
 
-// Функция для закрытия модального окна
 function closeModal () {
   showModal.value = false;
 }
