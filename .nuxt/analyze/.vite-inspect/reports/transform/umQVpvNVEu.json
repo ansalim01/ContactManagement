@@ -1,0 +1,222 @@
+{
+  "resolvedId": "C:/web/petProject/ContactManagement1/components/AppModal.vue?vue&type=script&setup=true&lang.ts",
+  "transforms": [
+    {
+      "name": "vite:vue",
+      "result": "import { defineComponent as _defineComponent } from 'vue'\nimport { resolveComponent as _resolveComponent, createVNode as _createVNode, createElementVNode as _createElementVNode, renderSlot as _renderSlot, openBlock as _openBlock, createElementBlock as _createElementBlock, createCommentVNode as _createCommentVNode, pushScopeId as _pushScopeId, popScopeId as _popScopeId } from \"vue\"\n\nconst _withScopeId = n => (_pushScopeId(\"data-v-8052afaa\"),n=n(),_popScopeId(),n)\nconst _hoisted_1 = { class: \"modal\" }\nconst _hoisted_2 = { class: \"modal-content\" }\n\nimport { onMounted, onUnmounted, ref } from 'vue';\r\n\r\n\nexport default /*#__PURE__*/_defineComponent({\n  __name: 'AppModal',\n  props: {\n    isVisible: { type: Boolean }\n  },\n  emits: [\"close\"],\n  setup(__props: any, { emit: __emit }) {\n\r\nconst props = __props;\r\n\r\nconst emit = __emit;\r\nconst isMouseDown = ref(false);\r\nfunction close () {\r\n  emit('close');\r\n}\r\n\r\nfunction handleMouseDown (event: MouseEvent) {\r\n  if (event.target === event.currentTarget) {\r\n    isMouseDown.value = true;\r\n  }\r\n}\r\n\r\nfunction handleMouseUp (event: MouseEvent) {\r\n  if (event.target === event.currentTarget && isMouseDown.value) {\r\n    close();\r\n  }\r\n  isMouseDown.value = false;\r\n}\r\n\r\nfunction handleKeyDown (event: KeyboardEvent) {\r\n  if (event.key === 'Escape') {\r\n    close();\r\n  }\r\n}\r\n\r\nonMounted(() => {\r\n  document.addEventListener('keydown', handleKeyDown);\r\n});\r\n\r\nonUnmounted(() => {\r\n  document.removeEventListener('keydown', handleKeyDown);\r\n});\r\n\r\n\nreturn (_ctx: any,_cache: any) => {\n  const _component_AppIcon = _resolveComponent(\"AppIcon\")!\n\n  return (props.isVisible)\n    ? (_openBlock(), _createElementBlock(\"div\", {\n        key: 0,\n        class: \"modal-overlay\",\n        onMousedown: handleMouseDown,\n        onMouseup: handleMouseUp\n      }, [\n        _createElementVNode(\"div\", _hoisted_1, [\n          _createElementVNode(\"button\", {\n            class: \"close-button\",\n            onClick: close\n          }, [\n            _createVNode(_component_AppIcon, {\n              name: \"close\",\n              width: 24,\n              height: 24\n            })\n          ]),\n          _createElementVNode(\"div\", _hoisted_2, [\n            _renderSlot(_ctx.$slots, \"default\", {}, undefined, true)\n          ])\n        ])\n      ], 32))\n    : _createCommentVNode(\"\", true)\n}\n}\n\n})",
+      "start": 1720823557719,
+      "end": 1720823557719
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1720823557719,
+      "end": 1720823557719,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1720823557719,
+      "end": 1720823557719,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1720823557719,
+      "end": 1720823557719,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1720823557719,
+      "end": 1720823557719,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "result": "import { defineComponent as _defineComponent } from \"vue\";\nimport { resolveComponent as _resolveComponent, createVNode as _createVNode, createElementVNode as _createElementVNode, renderSlot as _renderSlot, openBlock as _openBlock, createElementBlock as _createElementBlock, createCommentVNode as _createCommentVNode, pushScopeId as _pushScopeId, popScopeId as _popScopeId } from \"vue\";\nconst _withScopeId = (n) => (_pushScopeId(\"data-v-8052afaa\"), n = n(), _popScopeId(), n);\nconst _hoisted_1 = { class: \"modal\" };\nconst _hoisted_2 = { class: \"modal-content\" };\nimport { onMounted, onUnmounted, ref } from \"vue\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"AppModal\",\n  props: {\n    isVisible: { type: Boolean }\n  },\n  emits: [\"close\"],\n  setup(__props, { emit: __emit }) {\n    const props = __props;\n    const emit = __emit;\n    const isMouseDown = ref(false);\n    function close() {\n      emit(\"close\");\n    }\n    function handleMouseDown(event) {\n      if (event.target === event.currentTarget) {\n        isMouseDown.value = true;\n      }\n    }\n    function handleMouseUp(event) {\n      if (event.target === event.currentTarget && isMouseDown.value) {\n        close();\n      }\n      isMouseDown.value = false;\n    }\n    function handleKeyDown(event) {\n      if (event.key === \"Escape\") {\n        close();\n      }\n    }\n    onMounted(() => {\n      document.addEventListener(\"keydown\", handleKeyDown);\n    });\n    onUnmounted(() => {\n      document.removeEventListener(\"keydown\", handleKeyDown);\n    });\n    return (_ctx, _cache) => {\n      const _component_AppIcon = _resolveComponent(\"AppIcon\");\n      return props.isVisible ? (_openBlock(), _createElementBlock(\"div\", {\n        key: 0,\n        class: \"modal-overlay\",\n        onMousedown: handleMouseDown,\n        onMouseup: handleMouseUp\n      }, [\n        _createElementVNode(\"div\", _hoisted_1, [\n          _createElementVNode(\"button\", {\n            class: \"close-button\",\n            onClick: close\n          }, [\n            _createVNode(_component_AppIcon, {\n              name: \"close\",\n              width: 24,\n              height: 24\n            })\n          ]),\n          _createElementVNode(\"div\", _hoisted_2, [\n            _renderSlot(_ctx.$slots, \"default\", {}, void 0, true)\n          ])\n        ])\n      ], 32)) : _createCommentVNode(\"\", true);\n    };\n  }\n});\n",
+      "start": 1720823557723,
+      "end": 1720823557748,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "C:/web/petProject/ContactManagement1/components/AppModal.vue?vue&type=script&setup=true&lang.ts"
+        ],
+        "sourcesContent": [
+          "import { defineComponent as _defineComponent } from 'vue'\nimport { resolveComponent as _resolveComponent, createVNode as _createVNode, createElementVNode as _createElementVNode, renderSlot as _renderSlot, openBlock as _openBlock, createElementBlock as _createElementBlock, createCommentVNode as _createCommentVNode, pushScopeId as _pushScopeId, popScopeId as _popScopeId } from \"vue\"\n\nconst _withScopeId = n => (_pushScopeId(\"data-v-8052afaa\"),n=n(),_popScopeId(),n)\nconst _hoisted_1 = { class: \"modal\" }\nconst _hoisted_2 = { class: \"modal-content\" }\n\nimport { onMounted, onUnmounted, ref } from 'vue';\r\n\r\n\nexport default /*#__PURE__*/_defineComponent({\n  __name: 'AppModal',\n  props: {\n    isVisible: { type: Boolean }\n  },\n  emits: [\"close\"],\n  setup(__props: any, { emit: __emit }) {\n\r\nconst props = __props;\r\n\r\nconst emit = __emit;\r\nconst isMouseDown = ref(false);\r\nfunction close () {\r\n  emit('close');\r\n}\r\n\r\nfunction handleMouseDown (event: MouseEvent) {\r\n  if (event.target === event.currentTarget) {\r\n    isMouseDown.value = true;\r\n  }\r\n}\r\n\r\nfunction handleMouseUp (event: MouseEvent) {\r\n  if (event.target === event.currentTarget && isMouseDown.value) {\r\n    close();\r\n  }\r\n  isMouseDown.value = false;\r\n}\r\n\r\nfunction handleKeyDown (event: KeyboardEvent) {\r\n  if (event.key === 'Escape') {\r\n    close();\r\n  }\r\n}\r\n\r\nonMounted(() => {\r\n  document.addEventListener('keydown', handleKeyDown);\r\n});\r\n\r\nonUnmounted(() => {\r\n  document.removeEventListener('keydown', handleKeyDown);\r\n});\r\n\r\n\nreturn (_ctx: any,_cache: any) => {\n  const _component_AppIcon = _resolveComponent(\"AppIcon\")!\n\n  return (props.isVisible)\n    ? (_openBlock(), _createElementBlock(\"div\", {\n        key: 0,\n        class: \"modal-overlay\",\n        onMousedown: handleMouseDown,\n        onMouseup: handleMouseUp\n      }, [\n        _createElementVNode(\"div\", _hoisted_1, [\n          _createElementVNode(\"button\", {\n            class: \"close-button\",\n            onClick: close\n          }, [\n            _createVNode(_component_AppIcon, {\n              name: \"close\",\n              width: 24,\n              height: 24\n            })\n          ]),\n          _createElementVNode(\"div\", _hoisted_2, [\n            _renderSlot(_ctx.$slots, \"default\", {}, undefined, true)\n          ])\n        ])\n      ], 32))\n    : _createCommentVNode(\"\", true)\n}\n}\n\n})"
+        ],
+        "mappings": "AAAA,SAAS,mBAAmB,wBAAwB;AACpD,SAAS,oBAAoB,mBAAmB,eAAe,cAAc,sBAAsB,qBAAqB,cAAc,aAAa,aAAa,YAAY,sBAAsB,qBAAqB,sBAAsB,qBAAqB,eAAe,cAAc,cAAc,mBAAmB;AAEhU,MAAM,eAAe,QAAM,aAAa,iBAAiB,GAAE,IAAE,EAAE,GAAE,YAAY,GAAE;AAC/E,MAAM,aAAa,EAAE,OAAO,QAAQ;AACpC,MAAM,aAAa,EAAE,OAAO,gBAAgB;AAE5C,SAAS,WAAW,aAAa,WAAW;AAG5C,eAA4B,iCAAiB;AAAA,EAC3C,QAAQ;AAAA,EACR,OAAO;AAAA,IACL,WAAW,EAAE,MAAM,QAAQ;AAAA,EAC7B;AAAA,EACA,OAAO,CAAC,OAAO;AAAA,EACf,MAAM,SAAc,EAAE,MAAM,OAAO,GAAG;AAExC,UAAM,QAAQ;AAEd,UAAM,OAAO;AACb,UAAM,cAAc,IAAI,KAAK;AAC7B,aAAS,QAAS;AAChB,WAAK,OAAO;AAAA,IACd;AAEA,aAAS,gBAAiB,OAAmB;AAC3C,UAAI,MAAM,WAAW,MAAM,eAAe;AACxC,oBAAY,QAAQ;AAAA,MACtB;AAAA,IACF;AAEA,aAAS,cAAe,OAAmB;AACzC,UAAI,MAAM,WAAW,MAAM,iBAAiB,YAAY,OAAO;AAC7D,cAAM;AAAA,MACR;AACA,kBAAY,QAAQ;AAAA,IACtB;AAEA,aAAS,cAAe,OAAsB;AAC5C,UAAI,MAAM,QAAQ,UAAU;AAC1B,cAAM;AAAA,MACR;AAAA,IACF;AAEA,cAAU,MAAM;AACd,eAAS,iBAAiB,WAAW,aAAa;AAAA,IACpD,CAAC;AAED,gBAAY,MAAM;AAChB,eAAS,oBAAoB,WAAW,aAAa;AAAA,IACvD,CAAC;AAGD,WAAO,CAAC,MAAU,WAAgB;AAChC,YAAM,qBAAqB,kBAAkB,SAAS;AAEtD,aAAQ,MAAM,aACT,WAAW,GAAG,oBAAoB,OAAO;AAAA,QACxC,KAAK;AAAA,QACL,OAAO;AAAA,QACP,aAAa;AAAA,QACb,WAAW;AAAA,MACb,GAAG;AAAA,QACD,oBAAoB,OAAO,YAAY;AAAA,UACrC,oBAAoB,UAAU;AAAA,YAC5B,OAAO;AAAA,YACP,SAAS;AAAA,UACX,GAAG;AAAA,YACD,aAAa,oBAAoB;AAAA,cAC/B,MAAM;AAAA,cACN,OAAO;AAAA,cACP,QAAQ;AAAA,YACV,CAAC;AAAA,UACH,CAAC;AAAA,UACD,oBAAoB,OAAO,YAAY;AAAA,YACrC,YAAY,KAAK,QAAQ,WAAW,CAAC,GAAG,QAAW,IAAI;AAAA,UACzD,CAAC;AAAA,QACH,CAAC;AAAA,MACH,GAAG,EAAE,KACL,oBAAoB,IAAI,IAAI;AAAA,IAClC;AAAA,EACA;AAEA,CAAC;",
+        "names": []
+      }
+    },
+    {
+      "name": "vite:json",
+      "start": 1720823557748,
+      "end": 1720823557748,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1720823557748,
+      "end": 1720823557748,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1720823557748,
+      "end": 1720823557748,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1720823557748,
+      "end": 1720823557748,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1720823557748,
+      "end": 1720823557748,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1720823557748,
+      "end": 1720823557748,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1720823557748,
+      "end": 1720823557748,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1720823557748,
+      "end": 1720823557749,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1720823557749,
+      "end": 1720823557749,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1720823557749,
+      "end": 1720823557749,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1720823557749,
+      "end": 1720823557749,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1720823557749,
+      "end": 1720823557749,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1720823557749,
+      "end": 1720823557749,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1720823557749,
+      "end": 1720823557749,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1720823557749,
+      "end": 1720823557749,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1720823557749,
+      "end": 1720823557749,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1720823557749,
+      "end": 1720823557749,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1720823557749,
+      "end": 1720823557749,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1720823557749,
+      "end": 1720823557749,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1720823557749,
+      "end": 1720823557751,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1720823557752,
+      "end": 1720823557752,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1720823557752,
+      "end": 1720823557752,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1720823557752,
+      "end": 1720823557752,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1720823557752,
+      "end": 1720823557752,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "result": "import { default as __nuxt_component_0 } from \"C:/web/petProject/ContactManagement1/components/AppIcon.vue\";\nimport { defineComponent as _defineComponent } from \"vue\";\nimport { resolveComponent as _resolveComponent, createVNode as _createVNode, createElementVNode as _createElementVNode, renderSlot as _renderSlot, openBlock as _openBlock, createElementBlock as _createElementBlock, createCommentVNode as _createCommentVNode, pushScopeId as _pushScopeId, popScopeId as _popScopeId } from \"vue\";\nconst _withScopeId = (n) => (_pushScopeId(\"data-v-8052afaa\"), n = n(), _popScopeId(), n);\nconst _hoisted_1 = { class: \"modal\" };\nconst _hoisted_2 = { class: \"modal-content\" };\nimport { onMounted, onUnmounted, ref } from \"vue\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"AppModal\",\n  props: {\n    isVisible: { type: Boolean }\n  },\n  emits: [\"close\"],\n  setup(__props, { emit: __emit }) {\n    const props = __props;\n    const emit = __emit;\n    const isMouseDown = ref(false);\n    function close() {\n      emit(\"close\");\n    }\n    function handleMouseDown(event) {\n      if (event.target === event.currentTarget) {\n        isMouseDown.value = true;\n      }\n    }\n    function handleMouseUp(event) {\n      if (event.target === event.currentTarget && isMouseDown.value) {\n        close();\n      }\n      isMouseDown.value = false;\n    }\n    function handleKeyDown(event) {\n      if (event.key === \"Escape\") {\n        close();\n      }\n    }\n    onMounted(() => {\n      document.addEventListener(\"keydown\", handleKeyDown);\n    });\n    onUnmounted(() => {\n      document.removeEventListener(\"keydown\", handleKeyDown);\n    });\n    return (_ctx, _cache) => {\n      const _component_AppIcon = __nuxt_component_0;\n      return props.isVisible ? (_openBlock(), _createElementBlock(\"div\", {\n        key: 0,\n        class: \"modal-overlay\",\n        onMousedown: handleMouseDown,\n        onMouseup: handleMouseUp\n      }, [\n        _createElementVNode(\"div\", _hoisted_1, [\n          _createElementVNode(\"button\", {\n            class: \"close-button\",\n            onClick: close\n          }, [\n            _createVNode(_component_AppIcon, {\n              name: \"close\",\n              width: 24,\n              height: 24\n            })\n          ]),\n          _createElementVNode(\"div\", _hoisted_2, [\n            _renderSlot(_ctx.$slots, \"default\", {}, void 0, true)\n          ])\n        ])\n      ], 32)) : _createCommentVNode(\"\", true);\n    };\n  }\n});\n",
+      "start": 1720823557752,
+      "end": 1720823557752,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1720823557752,
+      "end": 1720823557752,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1720823557753,
+      "end": 1720823557753,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1720823557753,
+      "end": 1720823557753,
+      "order": "normal"
+    }
+  ]
+}

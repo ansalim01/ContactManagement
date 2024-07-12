@@ -1,0 +1,230 @@
+{
+  "resolvedId": "C:/web/petProject/ContactManagement1/components/AppIcon.vue?vue&type=script&setup=true&lang.ts",
+  "transforms": [
+    {
+      "name": "vite:vue",
+      "result": "import { defineComponent as _defineComponent } from 'vue'\nimport { unref as _unref, createElementVNode as _createElementVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from \"vue\"\n\nconst _hoisted_1 = [\"width\", \"height\"]\nconst _hoisted_2 = [\"href\", \"fill\", \"color\"]\n\ninterface Props {\r\n  prefix?: string;\r\n  name: string;\r\n  color?: string;\r\n  width?: number;\r\n  height?: number;\r\n}\r\n\r\n\nexport default /*#__PURE__*/_defineComponent({\n  __name: 'AppIcon',\n  props: {\n    prefix: { default: 'icon' },\n    name: {},\n    color: { default: '#333' },\n    width: { default: 25 },\n    height: { default: 25 }\n  },\n  setup(__props: any) {\n\r\nconst props = __props;\r\n\r\nconst symbolId = computed(() => `#${props.prefix}-${props.name}`);\r\n\nreturn (_ctx: any,_cache: any) => {\n  return (_openBlock(), _createElementBlock(\"svg\", {\n    \"aria-hidden\": \"true\",\n    width: _ctx.width,\n    height: _ctx.height\n  }, [\n    _createElementVNode(\"use\", {\n      href: _unref(symbolId),\n      fill: _ctx.color,\n      color: _ctx.color\n    }, null, 8, _hoisted_2)\n  ], 8, _hoisted_1))\n}\n}\n\n})",
+      "start": 1720823557710,
+      "end": 1720823557710
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1720823557710,
+      "end": 1720823557710,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1720823557710,
+      "end": 1720823557710,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1720823557710,
+      "end": 1720823557710,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1720823557710,
+      "end": 1720823557710,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "result": "import { defineComponent as _defineComponent } from \"vue\";\nimport { unref as _unref, createElementVNode as _createElementVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from \"vue\";\nconst _hoisted_1 = [\"width\", \"height\"];\nconst _hoisted_2 = [\"href\", \"fill\", \"color\"];\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"AppIcon\",\n  props: {\n    prefix: { default: \"icon\" },\n    name: {},\n    color: { default: \"#333\" },\n    width: { default: 25 },\n    height: { default: 25 }\n  },\n  setup(__props) {\n    const props = __props;\n    const symbolId = computed(() => `#${props.prefix}-${props.name}`);\n    return (_ctx, _cache) => {\n      return _openBlock(), _createElementBlock(\"svg\", {\n        \"aria-hidden\": \"true\",\n        width: _ctx.width,\n        height: _ctx.height\n      }, [\n        _createElementVNode(\"use\", {\n          href: _unref(symbolId),\n          fill: _ctx.color,\n          color: _ctx.color\n        }, null, 8, _hoisted_2)\n      ], 8, _hoisted_1);\n    };\n  }\n});\n",
+      "start": 1720823557710,
+      "end": 1720823557748,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "C:/web/petProject/ContactManagement1/components/AppIcon.vue?vue&type=script&setup=true&lang.ts"
+        ],
+        "sourcesContent": [
+          "import { defineComponent as _defineComponent } from 'vue'\nimport { unref as _unref, createElementVNode as _createElementVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from \"vue\"\n\nconst _hoisted_1 = [\"width\", \"height\"]\nconst _hoisted_2 = [\"href\", \"fill\", \"color\"]\n\ninterface Props {\r\n  prefix?: string;\r\n  name: string;\r\n  color?: string;\r\n  width?: number;\r\n  height?: number;\r\n}\r\n\r\n\nexport default /*#__PURE__*/_defineComponent({\n  __name: 'AppIcon',\n  props: {\n    prefix: { default: 'icon' },\n    name: {},\n    color: { default: '#333' },\n    width: { default: 25 },\n    height: { default: 25 }\n  },\n  setup(__props: any) {\n\r\nconst props = __props;\r\n\r\nconst symbolId = computed(() => `#${props.prefix}-${props.name}`);\r\n\nreturn (_ctx: any,_cache: any) => {\n  return (_openBlock(), _createElementBlock(\"svg\", {\n    \"aria-hidden\": \"true\",\n    width: _ctx.width,\n    height: _ctx.height\n  }, [\n    _createElementVNode(\"use\", {\n      href: _unref(symbolId),\n      fill: _ctx.color,\n      color: _ctx.color\n    }, null, 8, _hoisted_2)\n  ], 8, _hoisted_1))\n}\n}\n\n})"
+        ],
+        "mappings": "AAAA,SAAS,mBAAmB,wBAAwB;AACpD,SAAS,SAAS,QAAQ,sBAAsB,qBAAqB,aAAa,YAAY,sBAAsB,2BAA2B;AAE/I,MAAM,aAAa,CAAC,SAAS,QAAQ;AACrC,MAAM,aAAa,CAAC,QAAQ,QAAQ,OAAO;AAW3C,eAA4B,iCAAiB;AAAA,EAC3C,QAAQ;AAAA,EACR,OAAO;AAAA,IACL,QAAQ,EAAE,SAAS,OAAO;AAAA,IAC1B,MAAM,CAAC;AAAA,IACP,OAAO,EAAE,SAAS,OAAO;AAAA,IACzB,OAAO,EAAE,SAAS,GAAG;AAAA,IACrB,QAAQ,EAAE,SAAS,GAAG;AAAA,EACxB;AAAA,EACA,MAAM,SAAc;AAEtB,UAAM,QAAQ;AAEd,UAAM,WAAW,SAAS,MAAM,IAAI,MAAM,MAAM,IAAI,MAAM,IAAI,EAAE;AAEhE,WAAO,CAAC,MAAU,WAAgB;AAChC,aAAQ,WAAW,GAAG,oBAAoB,OAAO;AAAA,QAC/C,eAAe;AAAA,QACf,OAAO,KAAK;AAAA,QACZ,QAAQ,KAAK;AAAA,MACf,GAAG;AAAA,QACD,oBAAoB,OAAO;AAAA,UACzB,MAAM,OAAO,QAAQ;AAAA,UACrB,MAAM,KAAK;AAAA,UACX,OAAO,KAAK;AAAA,QACd,GAAG,MAAM,GAAG,UAAU;AAAA,MACxB,GAAG,GAAG,UAAU;AAAA,IAClB;AAAA,EACA;AAEA,CAAC;",
+        "names": []
+      }
+    },
+    {
+      "name": "vite:json",
+      "start": 1720823557748,
+      "end": 1720823557748,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1720823557748,
+      "end": 1720823557748,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1720823557748,
+      "end": 1720823557748,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1720823557748,
+      "end": 1720823557748,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1720823557748,
+      "end": 1720823557748,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1720823557748,
+      "end": 1720823557748,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1720823557748,
+      "end": 1720823557748,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1720823557748,
+      "end": 1720823557749,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1720823557749,
+      "end": 1720823557749,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1720823557749,
+      "end": 1720823557749,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1720823557749,
+      "end": 1720823557749,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1720823557749,
+      "end": 1720823557749,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1720823557749,
+      "end": 1720823557749,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1720823557749,
+      "end": 1720823557749,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1720823557749,
+      "end": 1720823557749,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1720823557749,
+      "end": 1720823557749,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1720823557749,
+      "end": 1720823557749,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1720823557749,
+      "end": 1720823557749,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1720823557749,
+      "end": 1720823557749,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "result": "import { computed } from 'vue';\nimport { defineComponent as _defineComponent } from \"vue\";\nimport { unref as _unref, createElementVNode as _createElementVNode, openBlock as _openBlock, createElementBlock as _createElementBlock } from \"vue\";\nconst _hoisted_1 = [\"width\", \"height\"];\nconst _hoisted_2 = [\"href\", \"fill\", \"color\"];\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"AppIcon\",\n  props: {\n    prefix: { default: \"icon\" },\n    name: {},\n    color: { default: \"#333\" },\n    width: { default: 25 },\n    height: { default: 25 }\n  },\n  setup(__props) {\n    const props = __props;\n    const symbolId = computed(() => `#${props.prefix}-${props.name}`);\n    return (_ctx, _cache) => {\n      return _openBlock(), _createElementBlock(\"svg\", {\n        \"aria-hidden\": \"true\",\n        width: _ctx.width,\n        height: _ctx.height\n      }, [\n        _createElementVNode(\"use\", {\n          href: _unref(symbolId),\n          fill: _ctx.color,\n          color: _ctx.color\n        }, null, 8, _hoisted_2)\n      ], 8, _hoisted_1);\n    };\n  }\n});\n",
+      "start": 1720823557749,
+      "end": 1720823557751,
+      "order": "post",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          ""
+        ],
+        "names": [],
+        "mappings": ";AAAA,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC1D,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACrJ,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACvC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC7C,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACjD,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACpB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACV,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAChC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACb,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC/B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC3B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC3B,CAAC,CAAC,CAAC,CAAC;AACJ,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAClB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC1B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACtE,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC9B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACvD,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC9B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC1B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC3B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACV,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACpC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACjC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC3B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC3B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AAC/B,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACxB,CAAC,CAAC,CAAC,CAAC,CAAC,CAAC;AACN,CAAC,CAAC,CAAC;AACH,CAAC,CAAC,CAAC;"
+      }
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1720823557752,
+      "end": 1720823557752,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1720823557752,
+      "end": 1720823557752,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1720823557752,
+      "end": 1720823557752,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1720823557752,
+      "end": 1720823557752,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1720823557752,
+      "end": 1720823557752,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1720823557752,
+      "end": 1720823557752,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1720823557753,
+      "end": 1720823557753,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1720823557753,
+      "end": 1720823557753,
+      "order": "normal"
+    }
+  ]
+}

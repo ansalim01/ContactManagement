@@ -1,0 +1,224 @@
+{
+  "resolvedId": "C:/web/petProject/ContactManagement1/pages/index.vue?vue&type=script&setup=true&lang.ts",
+  "transforms": [
+    {
+      "name": "vite:vue",
+      "result": "import { defineComponent as _defineComponent } from 'vue'\nimport { resolveComponent as _resolveComponent, createVNode as _createVNode, unref as _unref, createElementVNode as _createElementVNode, withCtx as _withCtx, openBlock as _openBlock, createElementBlock as _createElementBlock } from \"vue\"\n\nconst _hoisted_1 = { class: \"contact\" }\nconst _hoisted_2 = { class: \"contact__container\" }\n\nimport { ref, onMounted, computed } from 'vue';\r\nimport ContactList from '@/components/ContactList.vue';\r\nimport SearchBar from '@/components/SearchBar.vue';\r\nimport ContactForm from '@/components/ContactForm.vue';\r\nimport AppModal from '@/components/AppModal.vue';\r\nimport type { InterfaceContactItems, InterfaceContactItem } from '@/types';\r\nimport { ModalType } from '@/types';\r\nimport { fetchContacts } from '@/api';\r\n\r\n// Реактивное состояние для заголовков контактов\r\n\nexport default /*#__PURE__*/_defineComponent({\n  __name: 'index',\n  setup(__props) {\n\r\nconst contactTitle = ref<string[]>(['key', 'name', 'telefon', 'email']);\r\n\r\n// Реактивное состояние для формы редактирования контакта\r\nconst formaContact = ref<InterfaceContactItem>({\r\n  key: '',\r\n  name: '',\r\n  telefon: '',\r\n  email: ''\r\n});\r\n\r\n// Реактивное состояние для видимости модального окна и типа модального окна\r\nconst showModal = ref<boolean>(false);\r\nconst typeModal = ref<ModalType>(ModalType.Add);\r\n\r\n// Реактивное состояние для поискового запроса\r\nconst searchQuery = ref<string>('');\r\n\r\n// Реактивное состояние для ошибок валидации\r\nconst validationErrors = ref<{ [key: string]: string }>({});\r\n\r\n// Функция для загрузки данных из localStorage\r\nfunction loadContactsFromLocalStorage (): InterfaceContactItems {\r\n  if (process.client) {\r\n    const savedContacts = localStorage.getItem('contacts');\r\n    if (savedContacts) {\r\n      return JSON.parse(savedContacts);\r\n    }\r\n  }\r\n  return [];\r\n}\r\n\r\n// Функция для загрузки данных из API, если localStorage пустой\r\nasync function loadContactsFromAPI (): Promise<InterfaceContactItems> {\r\n  try {\r\n    const contacts = await fetchContacts();\r\n    return contacts;\r\n  } catch (error) {\r\n    console.error('Failed to fetch contacts:', error);\r\n    return [];\r\n  }\r\n}\r\n\r\n// Дебаунс функция\r\nfunction debounce<T extends (...args: any[]) => void>(func: T, delay: number): T {\r\n  let timeoutId: ReturnType<typeof setTimeout> | null = null;\r\n  return function (this: any, ...args: Parameters<T>) {\r\n    if (timeoutId) {\r\n      clearTimeout(timeoutId);\r\n    }\r\n    timeoutId = setTimeout(() => func.apply(this, args), delay);\r\n  } as T;\r\n}\r\n\r\n// Реактивное состояние списка контактов\r\nconst contactList = ref<InterfaceContactItems>([]);\r\n\r\n// Загрузка данных из localStorage при монтировании компонента\r\nonMounted(async () => {\r\n  const savedContacts = loadContactsFromLocalStorage();\r\n  if (savedContacts.length > 0) {\r\n    contactList.value = savedContacts;\r\n  } else {\r\n    try {\r\n      const contactsFromAPI = await loadContactsFromAPI();\r\n      contactList.value = contactsFromAPI;\r\n      saveContactsToLocalStorage(contactsFromAPI);\r\n    } catch (error) {\r\n      console.error('Failed to fetch contacts:', error);\r\n    }\r\n  }\r\n});\r\n\r\n// Функция сохранения контактов в localStorage\r\nfunction saveContactsToLocalStorage (contacts: InterfaceContactItems) {\r\n  if (process.client) {\r\n    localStorage.setItem('contacts', JSON.stringify(contacts));\r\n  }\r\n}\r\n\r\n// Обработчик изменения поискового запроса с дебаунсом\r\nconst handleSearch = debounce((value: string) => {\r\n  searchQuery.value = value.toLowerCase();\r\n}, 300);\r\n\r\n// Вычисляемое свойство для фильтрации контактов на основе searchQuery\r\nconst filteredContacts = computed(() =>\r\n  contactList.value.filter(contact =>\r\n    contact.name.toLowerCase().includes(searchQuery.value.toLowerCase())\r\n  )\r\n);\r\n\r\n// Функция для начала редактирования контакта\r\nfunction editingContact (contact: InterfaceContactItem) {\r\n  typeModal.value = ModalType.Edit;\r\n  showModal.value = true;\r\n  formaContact.value = { ...contact };\r\n  validationErrors.value = {};\r\n}\r\n\r\n// Валидация полей формы\r\nfunction validateForm (contact: InterfaceContactItem): boolean {\r\n  const errors: { [key: string]: string } = {};\r\n\r\n  if (!contact.name) {\r\n    errors.name = 'Name is required';\r\n  }\r\n  if (!contact.telefon) {\r\n    errors.telefon = 'Telefon is required';\r\n  }\r\n  if (!contact.email) {\r\n    errors.email = 'Email is required';\r\n  } else if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(contact.email)) {\r\n    errors.email = 'Invalid email format';\r\n  }\r\n\r\n  validationErrors.value = errors;\r\n  return Object.keys(errors).length === 0;\r\n}\r\n\r\n// Функция для сохранения изменений или добавления нового контакта\r\nfunction saveContactChanges (updatedContact: InterfaceContactItem) {\r\n  if (!validateForm(updatedContact)) {\r\n    return;\r\n  }\r\n\r\n  if (typeModal.value === ModalType.Add) {\r\n    const newKey = String(Date.now());\r\n    updatedContact.key = newKey;\r\n    contactList.value.push(updatedContact);\r\n  } else if (typeModal.value === ModalType.Edit) {\r\n    const index = contactList.value.findIndex(c => c.key === updatedContact.key);\r\n    if (index !== -1) {\r\n      contactList.value[index] = updatedContact;\r\n    }\r\n  }\r\n\r\n  saveContactsToLocalStorage(contactList.value);\r\n  showModal.value = false;\r\n}\r\n\r\n// Функция для удаления контакта\r\nfunction deleteContact (item: InterfaceContactItem) {\r\n  const index = contactList.value.findIndex(c => c.key === item.key);\r\n  if (index !== -1) {\r\n    // contactList.value.splice(index, 1);\r\n    contactList.value = contactList.value.filter(p => p.key !== item.key);\r\n    saveContactsToLocalStorage(contactList.value);\r\n  }\r\n}\r\n\r\n// Функция для добавления нового контакта\r\nfunction addContact () {\r\n  typeModal.value = ModalType.Add;\r\n  formaContact.value = {\r\n    key: '',\r\n    name: '',\r\n    telefon: '',\r\n    email: ''\r\n  };\r\n  validationErrors.value = {};\r\n  showModal.value = true;\r\n}\r\n\r\n// Функция для закрытия модального окна\r\nfunction closeModal () {\r\n  showModal.value = false;\r\n}\r\n\nreturn (_ctx: any,_cache: any) => {\n  const _component_AppIcon = _resolveComponent(\"AppIcon\")!\n\n  return (_openBlock(), _createElementBlock(\"div\", _hoisted_1, [\n    _createElementVNode(\"div\", _hoisted_2, [\n      _createVNode(_component_AppIcon, {\n        name: \"user-add\",\n        width: 32,\n        height: 32,\n        color: \"teal\",\n        onClick: addContact\n      }),\n      _createVNode(SearchBar, {\n        placeholder: \"Поиск по имени\",\n        onInput: _unref(handleSearch)\n      }, null, 8, [\"onInput\"]),\n      _createVNode(ContactList, {\n        contacts: filteredContacts.value,\n        contactTitle: contactTitle.value,\n        onEditContact: editingContact,\n        onDeleteContact: deleteContact,\n        searchQuery: searchQuery.value\n      }, null, 8, [\"contacts\", \"contactTitle\", \"searchQuery\"])\n    ]),\n    _createVNode(AppModal, {\n      isVisible: showModal.value,\n      onClose: closeModal\n    }, {\n      default: _withCtx(() => [\n        _createVNode(ContactForm, {\n          formaContact: formaContact.value,\n          validationErrors: validationErrors.value,\n          typeModal: typeModal.value,\n          onSaveContactChanges: saveContactChanges\n        }, null, 8, [\"formaContact\", \"validationErrors\", \"typeModal\"])\n      ]),\n      _: 1\n    }, 8, [\"isVisible\"])\n  ]))\n}\n}\n\n})",
+      "start": 1720823556892,
+      "end": 1720823556892
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1720823556892,
+      "end": 1720823556892,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1720823556892,
+      "end": 1720823556892,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1720823556892,
+      "end": 1720823556892,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1720823556892,
+      "end": 1720823556892,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "result": "import { defineComponent as _defineComponent } from \"vue\";\nimport { resolveComponent as _resolveComponent, createVNode as _createVNode, unref as _unref, createElementVNode as _createElementVNode, withCtx as _withCtx, openBlock as _openBlock, createElementBlock as _createElementBlock } from \"vue\";\nconst _hoisted_1 = { class: \"contact\" };\nconst _hoisted_2 = { class: \"contact__container\" };\nimport { ref, onMounted, computed } from \"vue\";\nimport ContactList from \"@/components/ContactList.vue\";\nimport SearchBar from \"@/components/SearchBar.vue\";\nimport ContactForm from \"@/components/ContactForm.vue\";\nimport AppModal from \"@/components/AppModal.vue\";\nimport { ModalType } from \"@/types\";\nimport { fetchContacts } from \"@/api\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"index\",\n  setup(__props) {\n    const contactTitle = ref([\"key\", \"name\", \"telefon\", \"email\"]);\n    const formaContact = ref({\n      key: \"\",\n      name: \"\",\n      telefon: \"\",\n      email: \"\"\n    });\n    const showModal = ref(false);\n    const typeModal = ref(ModalType.Add);\n    const searchQuery = ref(\"\");\n    const validationErrors = ref({});\n    function loadContactsFromLocalStorage() {\n      if (process.client) {\n        const savedContacts = localStorage.getItem(\"contacts\");\n        if (savedContacts) {\n          return JSON.parse(savedContacts);\n        }\n      }\n      return [];\n    }\n    async function loadContactsFromAPI() {\n      try {\n        const contacts = await fetchContacts();\n        return contacts;\n      } catch (error) {\n        console.error(\"Failed to fetch contacts:\", error);\n        return [];\n      }\n    }\n    function debounce(func, delay) {\n      let timeoutId = null;\n      return function(...args) {\n        if (timeoutId) {\n          clearTimeout(timeoutId);\n        }\n        timeoutId = setTimeout(() => func.apply(this, args), delay);\n      };\n    }\n    const contactList = ref([]);\n    onMounted(async () => {\n      const savedContacts = loadContactsFromLocalStorage();\n      if (savedContacts.length > 0) {\n        contactList.value = savedContacts;\n      } else {\n        try {\n          const contactsFromAPI = await loadContactsFromAPI();\n          contactList.value = contactsFromAPI;\n          saveContactsToLocalStorage(contactsFromAPI);\n        } catch (error) {\n          console.error(\"Failed to fetch contacts:\", error);\n        }\n      }\n    });\n    function saveContactsToLocalStorage(contacts) {\n      if (process.client) {\n        localStorage.setItem(\"contacts\", JSON.stringify(contacts));\n      }\n    }\n    const handleSearch = debounce((value) => {\n      searchQuery.value = value.toLowerCase();\n    }, 300);\n    const filteredContacts = computed(\n      () => contactList.value.filter(\n        (contact) => contact.name.toLowerCase().includes(searchQuery.value.toLowerCase())\n      )\n    );\n    function editingContact(contact) {\n      typeModal.value = ModalType.Edit;\n      showModal.value = true;\n      formaContact.value = { ...contact };\n      validationErrors.value = {};\n    }\n    function validateForm(contact) {\n      const errors = {};\n      if (!contact.name) {\n        errors.name = \"Name is required\";\n      }\n      if (!contact.telefon) {\n        errors.telefon = \"Telefon is required\";\n      }\n      if (!contact.email) {\n        errors.email = \"Email is required\";\n      } else if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(contact.email)) {\n        errors.email = \"Invalid email format\";\n      }\n      validationErrors.value = errors;\n      return Object.keys(errors).length === 0;\n    }\n    function saveContactChanges(updatedContact) {\n      if (!validateForm(updatedContact)) {\n        return;\n      }\n      if (typeModal.value === ModalType.Add) {\n        const newKey = String(Date.now());\n        updatedContact.key = newKey;\n        contactList.value.push(updatedContact);\n      } else if (typeModal.value === ModalType.Edit) {\n        const index = contactList.value.findIndex((c) => c.key === updatedContact.key);\n        if (index !== -1) {\n          contactList.value[index] = updatedContact;\n        }\n      }\n      saveContactsToLocalStorage(contactList.value);\n      showModal.value = false;\n    }\n    function deleteContact(item) {\n      const index = contactList.value.findIndex((c) => c.key === item.key);\n      if (index !== -1) {\n        contactList.value = contactList.value.filter((p) => p.key !== item.key);\n        saveContactsToLocalStorage(contactList.value);\n      }\n    }\n    function addContact() {\n      typeModal.value = ModalType.Add;\n      formaContact.value = {\n        key: \"\",\n        name: \"\",\n        telefon: \"\",\n        email: \"\"\n      };\n      validationErrors.value = {};\n      showModal.value = true;\n    }\n    function closeModal() {\n      showModal.value = false;\n    }\n    return (_ctx, _cache) => {\n      const _component_AppIcon = _resolveComponent(\"AppIcon\");\n      return _openBlock(), _createElementBlock(\"div\", _hoisted_1, [\n        _createElementVNode(\"div\", _hoisted_2, [\n          _createVNode(_component_AppIcon, {\n            name: \"user-add\",\n            width: 32,\n            height: 32,\n            color: \"teal\",\n            onClick: addContact\n          }),\n          _createVNode(SearchBar, {\n            placeholder: \"Поиск по имени\",\n            onInput: _unref(handleSearch)\n          }, null, 8, [\"onInput\"]),\n          _createVNode(ContactList, {\n            contacts: filteredContacts.value,\n            contactTitle: contactTitle.value,\n            onEditContact: editingContact,\n            onDeleteContact: deleteContact,\n            searchQuery: searchQuery.value\n          }, null, 8, [\"contacts\", \"contactTitle\", \"searchQuery\"])\n        ]),\n        _createVNode(AppModal, {\n          isVisible: showModal.value,\n          onClose: closeModal\n        }, {\n          default: _withCtx(() => [\n            _createVNode(ContactForm, {\n              formaContact: formaContact.value,\n              validationErrors: validationErrors.value,\n              typeModal: typeModal.value,\n              onSaveContactChanges: saveContactChanges\n            }, null, 8, [\"formaContact\", \"validationErrors\", \"typeModal\"])\n          ]),\n          _: 1\n        }, 8, [\"isVisible\"])\n      ]);\n    };\n  }\n});\n",
+      "start": 1720823557094,
+      "end": 1720823557169,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "C:/web/petProject/ContactManagement1/pages/index.vue?vue&type=script&setup=true&lang.ts"
+        ],
+        "sourcesContent": [
+          "import { defineComponent as _defineComponent } from 'vue'\nimport { resolveComponent as _resolveComponent, createVNode as _createVNode, unref as _unref, createElementVNode as _createElementVNode, withCtx as _withCtx, openBlock as _openBlock, createElementBlock as _createElementBlock } from \"vue\"\n\nconst _hoisted_1 = { class: \"contact\" }\nconst _hoisted_2 = { class: \"contact__container\" }\n\nimport { ref, onMounted, computed } from 'vue';\r\nimport ContactList from '@/components/ContactList.vue';\r\nimport SearchBar from '@/components/SearchBar.vue';\r\nimport ContactForm from '@/components/ContactForm.vue';\r\nimport AppModal from '@/components/AppModal.vue';\r\nimport type { InterfaceContactItems, InterfaceContactItem } from '@/types';\r\nimport { ModalType } from '@/types';\r\nimport { fetchContacts } from '@/api';\r\n\r\n// Реактивное состояние для заголовков контактов\r\n\nexport default /*#__PURE__*/_defineComponent({\n  __name: 'index',\n  setup(__props) {\n\r\nconst contactTitle = ref<string[]>(['key', 'name', 'telefon', 'email']);\r\n\r\n// Реактивное состояние для формы редактирования контакта\r\nconst formaContact = ref<InterfaceContactItem>({\r\n  key: '',\r\n  name: '',\r\n  telefon: '',\r\n  email: ''\r\n});\r\n\r\n// Реактивное состояние для видимости модального окна и типа модального окна\r\nconst showModal = ref<boolean>(false);\r\nconst typeModal = ref<ModalType>(ModalType.Add);\r\n\r\n// Реактивное состояние для поискового запроса\r\nconst searchQuery = ref<string>('');\r\n\r\n// Реактивное состояние для ошибок валидации\r\nconst validationErrors = ref<{ [key: string]: string }>({});\r\n\r\n// Функция для загрузки данных из localStorage\r\nfunction loadContactsFromLocalStorage (): InterfaceContactItems {\r\n  if (process.client) {\r\n    const savedContacts = localStorage.getItem('contacts');\r\n    if (savedContacts) {\r\n      return JSON.parse(savedContacts);\r\n    }\r\n  }\r\n  return [];\r\n}\r\n\r\n// Функция для загрузки данных из API, если localStorage пустой\r\nasync function loadContactsFromAPI (): Promise<InterfaceContactItems> {\r\n  try {\r\n    const contacts = await fetchContacts();\r\n    return contacts;\r\n  } catch (error) {\r\n    console.error('Failed to fetch contacts:', error);\r\n    return [];\r\n  }\r\n}\r\n\r\n// Дебаунс функция\r\nfunction debounce<T extends (...args: any[]) => void>(func: T, delay: number): T {\r\n  let timeoutId: ReturnType<typeof setTimeout> | null = null;\r\n  return function (this: any, ...args: Parameters<T>) {\r\n    if (timeoutId) {\r\n      clearTimeout(timeoutId);\r\n    }\r\n    timeoutId = setTimeout(() => func.apply(this, args), delay);\r\n  } as T;\r\n}\r\n\r\n// Реактивное состояние списка контактов\r\nconst contactList = ref<InterfaceContactItems>([]);\r\n\r\n// Загрузка данных из localStorage при монтировании компонента\r\nonMounted(async () => {\r\n  const savedContacts = loadContactsFromLocalStorage();\r\n  if (savedContacts.length > 0) {\r\n    contactList.value = savedContacts;\r\n  } else {\r\n    try {\r\n      const contactsFromAPI = await loadContactsFromAPI();\r\n      contactList.value = contactsFromAPI;\r\n      saveContactsToLocalStorage(contactsFromAPI);\r\n    } catch (error) {\r\n      console.error('Failed to fetch contacts:', error);\r\n    }\r\n  }\r\n});\r\n\r\n// Функция сохранения контактов в localStorage\r\nfunction saveContactsToLocalStorage (contacts: InterfaceContactItems) {\r\n  if (process.client) {\r\n    localStorage.setItem('contacts', JSON.stringify(contacts));\r\n  }\r\n}\r\n\r\n// Обработчик изменения поискового запроса с дебаунсом\r\nconst handleSearch = debounce((value: string) => {\r\n  searchQuery.value = value.toLowerCase();\r\n}, 300);\r\n\r\n// Вычисляемое свойство для фильтрации контактов на основе searchQuery\r\nconst filteredContacts = computed(() =>\r\n  contactList.value.filter(contact =>\r\n    contact.name.toLowerCase().includes(searchQuery.value.toLowerCase())\r\n  )\r\n);\r\n\r\n// Функция для начала редактирования контакта\r\nfunction editingContact (contact: InterfaceContactItem) {\r\n  typeModal.value = ModalType.Edit;\r\n  showModal.value = true;\r\n  formaContact.value = { ...contact };\r\n  validationErrors.value = {};\r\n}\r\n\r\n// Валидация полей формы\r\nfunction validateForm (contact: InterfaceContactItem): boolean {\r\n  const errors: { [key: string]: string } = {};\r\n\r\n  if (!contact.name) {\r\n    errors.name = 'Name is required';\r\n  }\r\n  if (!contact.telefon) {\r\n    errors.telefon = 'Telefon is required';\r\n  }\r\n  if (!contact.email) {\r\n    errors.email = 'Email is required';\r\n  } else if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(contact.email)) {\r\n    errors.email = 'Invalid email format';\r\n  }\r\n\r\n  validationErrors.value = errors;\r\n  return Object.keys(errors).length === 0;\r\n}\r\n\r\n// Функция для сохранения изменений или добавления нового контакта\r\nfunction saveContactChanges (updatedContact: InterfaceContactItem) {\r\n  if (!validateForm(updatedContact)) {\r\n    return;\r\n  }\r\n\r\n  if (typeModal.value === ModalType.Add) {\r\n    const newKey = String(Date.now());\r\n    updatedContact.key = newKey;\r\n    contactList.value.push(updatedContact);\r\n  } else if (typeModal.value === ModalType.Edit) {\r\n    const index = contactList.value.findIndex(c => c.key === updatedContact.key);\r\n    if (index !== -1) {\r\n      contactList.value[index] = updatedContact;\r\n    }\r\n  }\r\n\r\n  saveContactsToLocalStorage(contactList.value);\r\n  showModal.value = false;\r\n}\r\n\r\n// Функция для удаления контакта\r\nfunction deleteContact (item: InterfaceContactItem) {\r\n  const index = contactList.value.findIndex(c => c.key === item.key);\r\n  if (index !== -1) {\r\n    // contactList.value.splice(index, 1);\r\n    contactList.value = contactList.value.filter(p => p.key !== item.key);\r\n    saveContactsToLocalStorage(contactList.value);\r\n  }\r\n}\r\n\r\n// Функция для добавления нового контакта\r\nfunction addContact () {\r\n  typeModal.value = ModalType.Add;\r\n  formaContact.value = {\r\n    key: '',\r\n    name: '',\r\n    telefon: '',\r\n    email: ''\r\n  };\r\n  validationErrors.value = {};\r\n  showModal.value = true;\r\n}\r\n\r\n// Функция для закрытия модального окна\r\nfunction closeModal () {\r\n  showModal.value = false;\r\n}\r\n\nreturn (_ctx: any,_cache: any) => {\n  const _component_AppIcon = _resolveComponent(\"AppIcon\")!\n\n  return (_openBlock(), _createElementBlock(\"div\", _hoisted_1, [\n    _createElementVNode(\"div\", _hoisted_2, [\n      _createVNode(_component_AppIcon, {\n        name: \"user-add\",\n        width: 32,\n        height: 32,\n        color: \"teal\",\n        onClick: addContact\n      }),\n      _createVNode(SearchBar, {\n        placeholder: \"Поиск по имени\",\n        onInput: _unref(handleSearch)\n      }, null, 8, [\"onInput\"]),\n      _createVNode(ContactList, {\n        contacts: filteredContacts.value,\n        contactTitle: contactTitle.value,\n        onEditContact: editingContact,\n        onDeleteContact: deleteContact,\n        searchQuery: searchQuery.value\n      }, null, 8, [\"contacts\", \"contactTitle\", \"searchQuery\"])\n    ]),\n    _createVNode(AppModal, {\n      isVisible: showModal.value,\n      onClose: closeModal\n    }, {\n      default: _withCtx(() => [\n        _createVNode(ContactForm, {\n          formaContact: formaContact.value,\n          validationErrors: validationErrors.value,\n          typeModal: typeModal.value,\n          onSaveContactChanges: saveContactChanges\n        }, null, 8, [\"formaContact\", \"validationErrors\", \"typeModal\"])\n      ]),\n      _: 1\n    }, 8, [\"isVisible\"])\n  ]))\n}\n}\n\n})"
+        ],
+        "mappings": "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",
+        "names": []
+      }
+    },
+    {
+      "name": "vite:json",
+      "start": 1720823557169,
+      "end": 1720823557169,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1720823557169,
+      "end": 1720823557169,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1720823557169,
+      "end": 1720823557169,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1720823557169,
+      "end": 1720823557169,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1720823557169,
+      "end": 1720823557169,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1720823557169,
+      "end": 1720823557169,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1720823557169,
+      "end": 1720823557169,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1720823557169,
+      "end": 1720823557169,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1720823557169,
+      "end": 1720823557169,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1720823557169,
+      "end": 1720823557169,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "result": "import { defineComponent as _defineComponent } from \"vue\";\nimport { resolveComponent as _resolveComponent, createVNode as _createVNode, unref as _unref, createElementVNode as _createElementVNode, withCtx as _withCtx, openBlock as _openBlock, createElementBlock as _createElementBlock } from \"vue\";\nconst _hoisted_1 = { class: \"contact\" };\nconst _hoisted_2 = { class: \"contact__container\" };\nimport { ref, onMounted, computed } from \"vue\";\nimport ContactList from \"@/components/ContactList.vue\";\nimport SearchBar from \"@/components/SearchBar.vue\";\nimport ContactForm from \"@/components/ContactForm.vue\";\nimport AppModal from \"@/components/AppModal.vue\";\nimport { ModalType } from \"@/types\";\nimport { fetchContacts } from \"@/api\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"index\",\n  setup(__props) {\n    const contactTitle = ref([\"key\", \"name\", \"telefon\", \"email\"]);\n    const formaContact = ref({\n      key: \"\",\n      name: \"\",\n      telefon: \"\",\n      email: \"\"\n    });\n    const showModal = ref(false);\n    const typeModal = ref(ModalType.Add);\n    const searchQuery = ref(\"\");\n    const validationErrors = ref({});\n    function loadContactsFromLocalStorage() {\n      if (true) {\n        const savedContacts = localStorage.getItem(\"contacts\");\n        if (savedContacts) {\n          return JSON.parse(savedContacts);\n        }\n      }\n      return [];\n    }\n    async function loadContactsFromAPI() {\n      try {\n        const contacts = await fetchContacts();\n        return contacts;\n      } catch (error) {\n        console.error(\"Failed to fetch contacts:\", error);\n        return [];\n      }\n    }\n    function debounce(func, delay) {\n      let timeoutId = null;\n      return function(...args) {\n        if (timeoutId) {\n          clearTimeout(timeoutId);\n        }\n        timeoutId = setTimeout(() => func.apply(this, args), delay);\n      };\n    }\n    const contactList = ref([]);\n    onMounted(async () => {\n      const savedContacts = loadContactsFromLocalStorage();\n      if (savedContacts.length > 0) {\n        contactList.value = savedContacts;\n      } else {\n        try {\n          const contactsFromAPI = await loadContactsFromAPI();\n          contactList.value = contactsFromAPI;\n          saveContactsToLocalStorage(contactsFromAPI);\n        } catch (error) {\n          console.error(\"Failed to fetch contacts:\", error);\n        }\n      }\n    });\n    function saveContactsToLocalStorage(contacts) {\n      if (true) {\n        localStorage.setItem(\"contacts\", JSON.stringify(contacts));\n      }\n    }\n    const handleSearch = debounce((value) => {\n      searchQuery.value = value.toLowerCase();\n    }, 300);\n    const filteredContacts = computed(\n      () => contactList.value.filter(\n        (contact) => contact.name.toLowerCase().includes(searchQuery.value.toLowerCase())\n      )\n    );\n    function editingContact(contact) {\n      typeModal.value = ModalType.Edit;\n      showModal.value = true;\n      formaContact.value = { ...contact };\n      validationErrors.value = {};\n    }\n    function validateForm(contact) {\n      const errors = {};\n      if (!contact.name) {\n        errors.name = \"Name is required\";\n      }\n      if (!contact.telefon) {\n        errors.telefon = \"Telefon is required\";\n      }\n      if (!contact.email) {\n        errors.email = \"Email is required\";\n      } else if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(contact.email)) {\n        errors.email = \"Invalid email format\";\n      }\n      validationErrors.value = errors;\n      return Object.keys(errors).length === 0;\n    }\n    function saveContactChanges(updatedContact) {\n      if (!validateForm(updatedContact)) {\n        return;\n      }\n      if (typeModal.value === ModalType.Add) {\n        const newKey = String(Date.now());\n        updatedContact.key = newKey;\n        contactList.value.push(updatedContact);\n      } else if (typeModal.value === ModalType.Edit) {\n        const index = contactList.value.findIndex((c) => c.key === updatedContact.key);\n        if (index !== -1) {\n          contactList.value[index] = updatedContact;\n        }\n      }\n      saveContactsToLocalStorage(contactList.value);\n      showModal.value = false;\n    }\n    function deleteContact(item) {\n      const index = contactList.value.findIndex((c) => c.key === item.key);\n      if (index !== -1) {\n        contactList.value = contactList.value.filter((p) => p.key !== item.key);\n        saveContactsToLocalStorage(contactList.value);\n      }\n    }\n    function addContact() {\n      typeModal.value = ModalType.Add;\n      formaContact.value = {\n        key: \"\",\n        name: \"\",\n        telefon: \"\",\n        email: \"\"\n      };\n      validationErrors.value = {};\n      showModal.value = true;\n    }\n    function closeModal() {\n      showModal.value = false;\n    }\n    return (_ctx, _cache) => {\n      const _component_AppIcon = _resolveComponent(\"AppIcon\");\n      return _openBlock(), _createElementBlock(\"div\", _hoisted_1, [\n        _createElementVNode(\"div\", _hoisted_2, [\n          _createVNode(_component_AppIcon, {\n            name: \"user-add\",\n            width: 32,\n            height: 32,\n            color: \"teal\",\n            onClick: addContact\n          }),\n          _createVNode(SearchBar, {\n            placeholder: \"Поиск по имени\",\n            onInput: _unref(handleSearch)\n          }, null, 8, [\"onInput\"]),\n          _createVNode(ContactList, {\n            contacts: filteredContacts.value,\n            contactTitle: contactTitle.value,\n            onEditContact: editingContact,\n            onDeleteContact: deleteContact,\n            searchQuery: searchQuery.value\n          }, null, 8, [\"contacts\", \"contactTitle\", \"searchQuery\"])\n        ]),\n        _createVNode(AppModal, {\n          isVisible: showModal.value,\n          onClose: closeModal\n        }, {\n          default: _withCtx(() => [\n            _createVNode(ContactForm, {\n              formaContact: formaContact.value,\n              validationErrors: validationErrors.value,\n              typeModal: typeModal.value,\n              onSaveContactChanges: saveContactChanges\n            }, null, 8, [\"formaContact\", \"validationErrors\", \"typeModal\"])\n          ]),\n          _: 1\n        }, 8, [\"isVisible\"])\n      ]);\n    };\n  }\n});\n",
+      "start": 1720823557169,
+      "end": 1720823557343,
+      "order": "normal",
+      "sourcemaps": null
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1720823557343,
+      "end": 1720823557343,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1720823557343,
+      "end": 1720823557343,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1720823557343,
+      "end": 1720823557343,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1720823557343,
+      "end": 1720823557343,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1720823557343,
+      "end": 1720823557343,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1720823557343,
+      "end": 1720823557343,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1720823557343,
+      "end": 1720823557343,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1720823557343,
+      "end": 1720823557343,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1720823557343,
+      "end": 1720823557348,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1720823557348,
+      "end": 1720823557348,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1720823557348,
+      "end": 1720823557348,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1720823557348,
+      "end": 1720823557348,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1720823557348,
+      "end": 1720823557348,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "result": "import { default as __nuxt_component_0 } from \"C:/web/petProject/ContactManagement1/components/AppIcon.vue\";\nimport { defineComponent as _defineComponent } from \"vue\";\nimport { resolveComponent as _resolveComponent, createVNode as _createVNode, unref as _unref, createElementVNode as _createElementVNode, withCtx as _withCtx, openBlock as _openBlock, createElementBlock as _createElementBlock } from \"vue\";\nconst _hoisted_1 = { class: \"contact\" };\nconst _hoisted_2 = { class: \"contact__container\" };\nimport { ref, onMounted, computed } from \"vue\";\nimport ContactList from \"@/components/ContactList.vue\";\nimport SearchBar from \"@/components/SearchBar.vue\";\nimport ContactForm from \"@/components/ContactForm.vue\";\nimport AppModal from \"@/components/AppModal.vue\";\nimport { ModalType } from \"@/types\";\nimport { fetchContacts } from \"@/api\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"index\",\n  setup(__props) {\n    const contactTitle = ref([\"key\", \"name\", \"telefon\", \"email\"]);\n    const formaContact = ref({\n      key: \"\",\n      name: \"\",\n      telefon: \"\",\n      email: \"\"\n    });\n    const showModal = ref(false);\n    const typeModal = ref(ModalType.Add);\n    const searchQuery = ref(\"\");\n    const validationErrors = ref({});\n    function loadContactsFromLocalStorage() {\n      if (true) {\n        const savedContacts = localStorage.getItem(\"contacts\");\n        if (savedContacts) {\n          return JSON.parse(savedContacts);\n        }\n      }\n      return [];\n    }\n    async function loadContactsFromAPI() {\n      try {\n        const contacts = await fetchContacts();\n        return contacts;\n      } catch (error) {\n        console.error(\"Failed to fetch contacts:\", error);\n        return [];\n      }\n    }\n    function debounce(func, delay) {\n      let timeoutId = null;\n      return function(...args) {\n        if (timeoutId) {\n          clearTimeout(timeoutId);\n        }\n        timeoutId = setTimeout(() => func.apply(this, args), delay);\n      };\n    }\n    const contactList = ref([]);\n    onMounted(async () => {\n      const savedContacts = loadContactsFromLocalStorage();\n      if (savedContacts.length > 0) {\n        contactList.value = savedContacts;\n      } else {\n        try {\n          const contactsFromAPI = await loadContactsFromAPI();\n          contactList.value = contactsFromAPI;\n          saveContactsToLocalStorage(contactsFromAPI);\n        } catch (error) {\n          console.error(\"Failed to fetch contacts:\", error);\n        }\n      }\n    });\n    function saveContactsToLocalStorage(contacts) {\n      if (true) {\n        localStorage.setItem(\"contacts\", JSON.stringify(contacts));\n      }\n    }\n    const handleSearch = debounce((value) => {\n      searchQuery.value = value.toLowerCase();\n    }, 300);\n    const filteredContacts = computed(\n      () => contactList.value.filter(\n        (contact) => contact.name.toLowerCase().includes(searchQuery.value.toLowerCase())\n      )\n    );\n    function editingContact(contact) {\n      typeModal.value = ModalType.Edit;\n      showModal.value = true;\n      formaContact.value = { ...contact };\n      validationErrors.value = {};\n    }\n    function validateForm(contact) {\n      const errors = {};\n      if (!contact.name) {\n        errors.name = \"Name is required\";\n      }\n      if (!contact.telefon) {\n        errors.telefon = \"Telefon is required\";\n      }\n      if (!contact.email) {\n        errors.email = \"Email is required\";\n      } else if (!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(contact.email)) {\n        errors.email = \"Invalid email format\";\n      }\n      validationErrors.value = errors;\n      return Object.keys(errors).length === 0;\n    }\n    function saveContactChanges(updatedContact) {\n      if (!validateForm(updatedContact)) {\n        return;\n      }\n      if (typeModal.value === ModalType.Add) {\n        const newKey = String(Date.now());\n        updatedContact.key = newKey;\n        contactList.value.push(updatedContact);\n      } else if (typeModal.value === ModalType.Edit) {\n        const index = contactList.value.findIndex((c) => c.key === updatedContact.key);\n        if (index !== -1) {\n          contactList.value[index] = updatedContact;\n        }\n      }\n      saveContactsToLocalStorage(contactList.value);\n      showModal.value = false;\n    }\n    function deleteContact(item) {\n      const index = contactList.value.findIndex((c) => c.key === item.key);\n      if (index !== -1) {\n        contactList.value = contactList.value.filter((p) => p.key !== item.key);\n        saveContactsToLocalStorage(contactList.value);\n      }\n    }\n    function addContact() {\n      typeModal.value = ModalType.Add;\n      formaContact.value = {\n        key: \"\",\n        name: \"\",\n        telefon: \"\",\n        email: \"\"\n      };\n      validationErrors.value = {};\n      showModal.value = true;\n    }\n    function closeModal() {\n      showModal.value = false;\n    }\n    return (_ctx, _cache) => {\n      const _component_AppIcon = __nuxt_component_0;\n      return _openBlock(), _createElementBlock(\"div\", _hoisted_1, [\n        _createElementVNode(\"div\", _hoisted_2, [\n          _createVNode(_component_AppIcon, {\n            name: \"user-add\",\n            width: 32,\n            height: 32,\n            color: \"teal\",\n            onClick: addContact\n          }),\n          _createVNode(SearchBar, {\n            placeholder: \"Поиск по имени\",\n            onInput: _unref(handleSearch)\n          }, null, 8, [\"onInput\"]),\n          _createVNode(ContactList, {\n            contacts: filteredContacts.value,\n            contactTitle: contactTitle.value,\n            onEditContact: editingContact,\n            onDeleteContact: deleteContact,\n            searchQuery: searchQuery.value\n          }, null, 8, [\"contacts\", \"contactTitle\", \"searchQuery\"])\n        ]),\n        _createVNode(AppModal, {\n          isVisible: showModal.value,\n          onClose: closeModal\n        }, {\n          default: _withCtx(() => [\n            _createVNode(ContactForm, {\n              formaContact: formaContact.value,\n              validationErrors: validationErrors.value,\n              typeModal: typeModal.value,\n              onSaveContactChanges: saveContactChanges\n            }, null, 8, [\"formaContact\", \"validationErrors\", \"typeModal\"])\n          ]),\n          _: 1\n        }, 8, [\"isVisible\"])\n      ]);\n    };\n  }\n});\n",
+      "start": 1720823557348,
+      "end": 1720823557348,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1720823557348,
+      "end": 1720823557348,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1720823557349,
+      "end": 1720823557349,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1720823557350,
+      "end": 1720823557350,
+      "order": "normal"
+    }
+  ]
+}

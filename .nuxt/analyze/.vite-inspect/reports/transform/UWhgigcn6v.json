@@ -1,0 +1,214 @@
+{
+  "resolvedId": "C:/web/petProject/ContactManagement1/components/ContactItem.vue",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "<script setup lang=\"ts\">\r\nimport { defineProps, defineEmits } from 'vue';\r\nimport type { InterfaceContactItem } from '@/types';\r\n\r\nconst props = defineProps<{ contactItem: InterfaceContactItem }>();\r\n\r\nconst emit = defineEmits<{\r\n  (e: 'editContact', contact: InterfaceContactItem): void;\r\n  (e: 'deleteContact', contact: InterfaceContactItem): void;\r\n}>();\r\n\r\nconst handleEdit = () => {\r\n  emit('editContact', props.contactItem);\r\n};\r\n\r\nconst handleDelete = () => {\r\n  emit('deleteContact', props.contactItem);\r\n};\r\n</script>\r\n\r\n<template>\r\n  <div class=\"contact-item__item\" v-for=\"(item, key) in contactItem\" :key=\"key\">\r\n    {{ item }}\r\n  </div>\r\n  <div class=\"contact-item__icons\">\r\n    <AppIcon name=\"gear-wheel\" :width=\"32\" :height=\"32\" color=\"teal\" @click=\"handleEdit()\" />\r\n    <AppIcon name=\"trashcan\" :width=\"32\" :height=\"32\" color=\"red\" @click=\"handleDelete()\" />\r\n  </div>\r\n</template>\r\n\r\n<style lang=\"scss\">\r\n.contact-item {\r\n  &__item {\r\n    flex: 0 0 $table-width;\r\n  }\r\n\r\n  &__icons {\r\n    display: flex;\r\n    align-items: center;\r\n    gap: 16px;\r\n  }\r\n}\r\n</style>\r\n",
+      "start": 1720823557777,
+      "end": 1720823557879,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1720823557879,
+      "end": 1720823557879,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1720823557879,
+      "end": 1720823557879,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1720823557879,
+      "end": 1720823557879,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1720823557879,
+      "end": 1720823557879,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1720823557879,
+      "end": 1720823557879,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1720823557879,
+      "end": 1720823557879,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1720823557879,
+      "end": 1720823557879,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": "import _sfc_main from \"C:/web/petProject/ContactManagement1/components/ContactItem.vue?vue&type=script&setup=true&lang.ts\";\nexport * from \"C:/web/petProject/ContactManagement1/components/ContactItem.vue?vue&type=script&setup=true&lang.ts\";\nimport \"C:/web/petProject/ContactManagement1/components/ContactItem.vue?vue&type=style&index=0&lang.scss\";\nexport default _sfc_main;\n",
+      "start": 1720823557879,
+      "end": 1720823557884,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1720823557884,
+      "end": 1720823557884,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1720823557884,
+      "end": 1720823557884,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1720823557884,
+      "end": 1720823557884,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1720823557884,
+      "end": 1720823557884,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1720823557884,
+      "end": 1720823557884,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1720823557884,
+      "end": 1720823557884,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1720823557884,
+      "end": 1720823557884,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1720823557884,
+      "end": 1720823557884,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1720823557884,
+      "end": 1720823557884,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1720823557884,
+      "end": 1720823557884,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1720823557884,
+      "end": 1720823557884,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1720823557884,
+      "end": 1720823557884,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1720823557884,
+      "end": 1720823557884,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1720823557884,
+      "end": 1720823557884,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1720823557884,
+      "end": 1720823557884,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1720823557884,
+      "end": 1720823557884,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1720823557884,
+      "end": 1720823557884,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1720823557884,
+      "end": 1720823557884,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1720823557884,
+      "end": 1720823557884,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1720823557884,
+      "end": 1720823557884,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1720823557884,
+      "end": 1720823557884,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1720823557884,
+      "end": 1720823557884,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1720823557884,
+      "end": 1720823557884,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1720823557884,
+      "end": 1720823557885,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1720823557885,
+      "end": 1720823557885,
+      "order": "normal"
+    }
+  ]
+}

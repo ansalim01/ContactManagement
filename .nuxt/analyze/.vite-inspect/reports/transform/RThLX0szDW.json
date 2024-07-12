@@ -1,0 +1,214 @@
+{
+  "resolvedId": "C:/web/petProject/ContactManagement1/components/ContactForm.vue",
+  "transforms": [
+    {
+      "name": "vite:load-fallback",
+      "result": "<template>\r\n  <div class=\"contact-form__modal\">\r\n    <div class=\"contact-form__modal-box\">\r\n      <label class=\"contact-form__modal-label\" for=\"name\">Name:</label>\r\n      <input\r\n        id=\"name\"\r\n        class=\"contact-form__modal-input\"\r\n        type=\"text\"\r\n        v-model=\"localFormaContact.name\"\r\n      >\r\n      <span class=\"error\" v-show=\"validationErrors.name\">{{ validationErrors.name }}</span>\r\n    </div>\r\n    <div class=\"contact-form__modal-box\">\r\n      <label class=\"contact-form__modal-label\" for=\"telefon\">Telefon:</label>\r\n      <input\r\n        id=\"telefon\"\r\n        class=\"contact-form__modal-input\"\r\n        type=\"text\"\r\n        v-model=\"localFormaContact.telefon\"\r\n      >\r\n      <span class=\"error\" v-show=\"validationErrors.telefon\">{{ validationErrors.telefon }}</span>\r\n    </div>\r\n    <div class=\"contact-form__modal-box\">\r\n      <label class=\"contact-form__modal-label\" for=\"email\">Email:</label>\r\n      <input\r\n        id=\"email\" class=\"contact-form__modal-input\" type=\"text\" v-model=\"localFormaContact.email\">\r\n      <span class=\"error\" v-show=\"validationErrors.email\">{{ validationErrors.email }}</span>\r\n    </div>\r\n    <button class=\"contact-form__modal-button\" @click=\"handleSaveContactChanges\">\r\n      {{ typeModal === ModalType.Add ? 'Добавить' : 'Сохранить' }}\r\n    </button>\r\n  </div>\r\n</template>\r\n\r\n<script setup lang=\"ts\">\r\nimport { defineProps, defineEmits, ref, watch } from 'vue';\r\nimport type { InterfaceContactItem } from '@/types';\r\nimport { ModalType } from '@/types';\r\n\r\nconst props = defineProps<{\r\n  formaContact: InterfaceContactItem,\r\n  validationErrors: { [key: string]: string },\r\n  typeModal: ModalType\r\n}>();\r\n\r\nconst emits = defineEmits<{ \r\n  saveContactChanges: (updatedContact: InterfaceContactItem) => void \r\n}>();\r\n\r\nconst localFormaContact = ref<InterfaceContactItem>({ ...props.formaContact });\r\n\r\nwatch(() => props.formaContact, (newVal) => {\r\n  localFormaContact.value = { ...newVal };\r\n});\r\n\r\nconst handleSaveContactChanges = () => {\r\n  emits('saveContactChanges', localFormaContact.value);\r\n};\r\n</script>\r\n\r\n<style lang=\"scss\">\r\n.error {\r\n  color: red;\r\n  font-size: 0.8em;\r\n}\r\n\r\n.contact-form {\r\n\t&__modal {\r\n    display: flex;\r\n    flex-direction: column;\r\n    gap: 12px;\r\n  }\r\n\r\n  &__modal-label {\r\n    display: flex;\r\n    align-items: center;\r\n    gap: 4px;\r\n  }\r\n\r\n  &__modal-input {\r\n    width: 100%;\r\n    border-radius: 8px;\r\n    border: 1px solid teal;\r\n    padding: 4px 8px;\r\n    outline: none;\r\n    :focus {\r\n      border: 2px solid teal;\r\n    }\r\n  }\r\n\r\n  &__modal-button {\r\n    background-color: #fff;\r\n    padding: 8px 16px;\r\n    border: 1px solid teal;\r\n    border-radius: 8px;\r\n  }\r\n}\r\n</style>\r\n",
+      "start": 1720823557368,
+      "end": 1720823557657,
+      "sourcemaps": null
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1720823557657,
+      "end": 1720823557657,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1720823557657,
+      "end": 1720823557657,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1720823557657,
+      "end": 1720823557657,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1720823557657,
+      "end": 1720823557657,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "start": 1720823557657,
+      "end": 1720823557657,
+      "order": "normal"
+    },
+    {
+      "name": "vite:json",
+      "start": 1720823557657,
+      "end": 1720823557657,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1720823557657,
+      "end": 1720823557657,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "result": "import _sfc_main from \"C:/web/petProject/ContactManagement1/components/ContactForm.vue?vue&type=script&setup=true&lang.ts\";\nexport * from \"C:/web/petProject/ContactManagement1/components/ContactForm.vue?vue&type=script&setup=true&lang.ts\";\nimport \"C:/web/petProject/ContactManagement1/components/ContactForm.vue?vue&type=style&index=0&lang.scss\";\nexport default _sfc_main;\n",
+      "start": 1720823557657,
+      "end": 1720823557698,
+      "order": "normal",
+      "sourcemaps": {
+        "mappings": ""
+      }
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1720823557698,
+      "end": 1720823557698,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1720823557698,
+      "end": 1720823557698,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1720823557698,
+      "end": 1720823557698,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1720823557698,
+      "end": 1720823557698,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1720823557698,
+      "end": 1720823557699,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1720823557699,
+      "end": 1720823557699,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1720823557699,
+      "end": 1720823557699,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1720823557699,
+      "end": 1720823557699,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1720823557699,
+      "end": 1720823557699,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1720823557699,
+      "end": 1720823557699,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1720823557699,
+      "end": 1720823557699,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1720823557699,
+      "end": 1720823557699,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1720823557699,
+      "end": 1720823557699,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1720823557699,
+      "end": 1720823557699,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1720823557699,
+      "end": 1720823557699,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1720823557702,
+      "end": 1720823557702,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1720823557702,
+      "end": 1720823557703,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1720823557703,
+      "end": 1720823557703,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1720823557703,
+      "end": 1720823557703,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1720823557703,
+      "end": 1720823557703,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1720823557703,
+      "end": 1720823557703,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "start": 1720823557703,
+      "end": 1720823557704,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1720823557704,
+      "end": 1720823557704,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1720823557704,
+      "end": 1720823557704,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1720823557704,
+      "end": 1720823557704,
+      "order": "normal"
+    }
+  ]
+}

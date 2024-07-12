@@ -1,0 +1,222 @@
+{
+  "resolvedId": "C:/web/petProject/ContactManagement1/components/ContactList.vue?vue&type=script&setup=true&lang.ts",
+  "transforms": [
+    {
+      "name": "vite:vue",
+      "result": "import { defineComponent as _defineComponent } from 'vue'\nimport { renderList as _renderList, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock, toDisplayString as _toDisplayString, createElementVNode as _createElementVNode, resolveComponent as _resolveComponent, createVNode as _createVNode, TransitionGroup as _TransitionGroup, withCtx as _withCtx } from \"vue\"\n\nconst _hoisted_1 = { class: \"contact-list__list\" }\nconst _hoisted_2 = { class: \"contact-list__title\" }\n\nimport { computed } from 'vue';\r\nimport type { InterfaceContactItems, InterfaceContactItem } from '@/types';\r\n\r\n\nexport default /*#__PURE__*/_defineComponent({\n  __name: 'ContactList',\n  props: {\n    contacts: {},\n    contactTitle: {},\n    searchQuery: {}\n  },\n  emits: [\"editContact\", \"deleteContact\"],\n  setup(__props: any, { emit: __emit }) {\n\r\nconst props = __props;\r\n\r\nconst emit = __emit;\r\n\r\n// Фильтрация контактов на основе поискового запроса\r\nconst filteredContacts = computed(() =>\r\n  props.contacts.filter(contact =>\r\n    contact.name.toLowerCase().includes(props.searchQuery.toLowerCase())\r\n  )\r\n);\r\n\nreturn (_ctx: any,_cache: any) => {\n  const _component_ContactItem = _resolveComponent(\"ContactItem\")!\n\n  return (_openBlock(), _createElementBlock(\"div\", _hoisted_1, [\n    _createElementVNode(\"div\", _hoisted_2, [\n      (_openBlock(true), _createElementBlock(_Fragment, null, _renderList(props.contactTitle, (title) => {\n        return (_openBlock(), _createElementBlock(\"div\", {\n          class: \"contact-list__title-item\",\n          key: title\n        }, _toDisplayString(title), 1))\n      }), 128))\n    ]),\n    _createVNode(_TransitionGroup, {\n      name: \"list\",\n      tag: \"div\",\n      class: \"contact-list__transition\"\n    }, {\n      default: _withCtx(() => [\n        (_openBlock(true), _createElementBlock(_Fragment, null, _renderList(filteredContacts.value, (contact) => {\n          return (_openBlock(), _createElementBlock(\"div\", {\n            class: \"contact-list__items\",\n            key: contact.key\n          }, [\n            _createVNode(_component_ContactItem, {\n              contactItem: contact,\n              onEditContact: ($event: any) => (emit('editContact', contact)),\n              onDeleteContact: ($event: any) => (emit('deleteContact', contact))\n            }, null, 8, [\"contactItem\", \"onEditContact\", \"onDeleteContact\"])\n          ]))\n        }), 128))\n      ]),\n      _: 1\n    })\n  ]))\n}\n}\n\n})",
+      "start": 1720823557711,
+      "end": 1720823557711
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1720823557711,
+      "end": 1720823557711,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1720823557711,
+      "end": 1720823557711,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1720823557711,
+      "end": 1720823557711,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1720823557711,
+      "end": 1720823557711,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "result": "import { defineComponent as _defineComponent } from \"vue\";\nimport { renderList as _renderList, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock, toDisplayString as _toDisplayString, createElementVNode as _createElementVNode, resolveComponent as _resolveComponent, createVNode as _createVNode, TransitionGroup as _TransitionGroup, withCtx as _withCtx } from \"vue\";\nconst _hoisted_1 = { class: \"contact-list__list\" };\nconst _hoisted_2 = { class: \"contact-list__title\" };\nimport { computed } from \"vue\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"ContactList\",\n  props: {\n    contacts: {},\n    contactTitle: {},\n    searchQuery: {}\n  },\n  emits: [\"editContact\", \"deleteContact\"],\n  setup(__props, { emit: __emit }) {\n    const props = __props;\n    const emit = __emit;\n    const filteredContacts = computed(\n      () => props.contacts.filter(\n        (contact) => contact.name.toLowerCase().includes(props.searchQuery.toLowerCase())\n      )\n    );\n    return (_ctx, _cache) => {\n      const _component_ContactItem = _resolveComponent(\"ContactItem\");\n      return _openBlock(), _createElementBlock(\"div\", _hoisted_1, [\n        _createElementVNode(\"div\", _hoisted_2, [\n          (_openBlock(true), _createElementBlock(_Fragment, null, _renderList(props.contactTitle, (title) => {\n            return _openBlock(), _createElementBlock(\"div\", {\n              class: \"contact-list__title-item\",\n              key: title\n            }, _toDisplayString(title), 1);\n          }), 128))\n        ]),\n        _createVNode(_TransitionGroup, {\n          name: \"list\",\n          tag: \"div\",\n          class: \"contact-list__transition\"\n        }, {\n          default: _withCtx(() => [\n            (_openBlock(true), _createElementBlock(_Fragment, null, _renderList(filteredContacts.value, (contact) => {\n              return _openBlock(), _createElementBlock(\"div\", {\n                class: \"contact-list__items\",\n                key: contact.key\n              }, [\n                _createVNode(_component_ContactItem, {\n                  contactItem: contact,\n                  onEditContact: ($event) => emit(\"editContact\", contact),\n                  onDeleteContact: ($event) => emit(\"deleteContact\", contact)\n                }, null, 8, [\"contactItem\", \"onEditContact\", \"onDeleteContact\"])\n              ]);\n            }), 128))\n          ]),\n          _: 1\n        })\n      ]);\n    };\n  }\n});\n",
+      "start": 1720823557715,
+      "end": 1720823557748,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "C:/web/petProject/ContactManagement1/components/ContactList.vue?vue&type=script&setup=true&lang.ts"
+        ],
+        "sourcesContent": [
+          "import { defineComponent as _defineComponent } from 'vue'\nimport { renderList as _renderList, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock, toDisplayString as _toDisplayString, createElementVNode as _createElementVNode, resolveComponent as _resolveComponent, createVNode as _createVNode, TransitionGroup as _TransitionGroup, withCtx as _withCtx } from \"vue\"\n\nconst _hoisted_1 = { class: \"contact-list__list\" }\nconst _hoisted_2 = { class: \"contact-list__title\" }\n\nimport { computed } from 'vue';\r\nimport type { InterfaceContactItems, InterfaceContactItem } from '@/types';\r\n\r\n\nexport default /*#__PURE__*/_defineComponent({\n  __name: 'ContactList',\n  props: {\n    contacts: {},\n    contactTitle: {},\n    searchQuery: {}\n  },\n  emits: [\"editContact\", \"deleteContact\"],\n  setup(__props: any, { emit: __emit }) {\n\r\nconst props = __props;\r\n\r\nconst emit = __emit;\r\n\r\n// Фильтрация контактов на основе поискового запроса\r\nconst filteredContacts = computed(() =>\r\n  props.contacts.filter(contact =>\r\n    contact.name.toLowerCase().includes(props.searchQuery.toLowerCase())\r\n  )\r\n);\r\n\nreturn (_ctx: any,_cache: any) => {\n  const _component_ContactItem = _resolveComponent(\"ContactItem\")!\n\n  return (_openBlock(), _createElementBlock(\"div\", _hoisted_1, [\n    _createElementVNode(\"div\", _hoisted_2, [\n      (_openBlock(true), _createElementBlock(_Fragment, null, _renderList(props.contactTitle, (title) => {\n        return (_openBlock(), _createElementBlock(\"div\", {\n          class: \"contact-list__title-item\",\n          key: title\n        }, _toDisplayString(title), 1))\n      }), 128))\n    ]),\n    _createVNode(_TransitionGroup, {\n      name: \"list\",\n      tag: \"div\",\n      class: \"contact-list__transition\"\n    }, {\n      default: _withCtx(() => [\n        (_openBlock(true), _createElementBlock(_Fragment, null, _renderList(filteredContacts.value, (contact) => {\n          return (_openBlock(), _createElementBlock(\"div\", {\n            class: \"contact-list__items\",\n            key: contact.key\n          }, [\n            _createVNode(_component_ContactItem, {\n              contactItem: contact,\n              onEditContact: ($event: any) => (emit('editContact', contact)),\n              onDeleteContact: ($event: any) => (emit('deleteContact', contact))\n            }, null, 8, [\"contactItem\", \"onEditContact\", \"onDeleteContact\"])\n          ]))\n        }), 128))\n      ]),\n      _: 1\n    })\n  ]))\n}\n}\n\n})"
+        ],
+        "mappings": "AAAA,SAAS,mBAAmB,wBAAwB;AACpD,SAAS,cAAc,aAAa,YAAY,WAAW,aAAa,YAAY,sBAAsB,qBAAqB,mBAAmB,kBAAkB,sBAAsB,qBAAqB,oBAAoB,mBAAmB,eAAe,cAAc,mBAAmB,kBAAkB,WAAW,gBAAgB;AAEnV,MAAM,aAAa,EAAE,OAAO,qBAAqB;AACjD,MAAM,aAAa,EAAE,OAAO,sBAAsB;AAElD,SAAS,gBAAgB;AAIzB,eAA4B,iCAAiB;AAAA,EAC3C,QAAQ;AAAA,EACR,OAAO;AAAA,IACL,UAAU,CAAC;AAAA,IACX,cAAc,CAAC;AAAA,IACf,aAAa,CAAC;AAAA,EAChB;AAAA,EACA,OAAO,CAAC,eAAe,eAAe;AAAA,EACtC,MAAM,SAAc,EAAE,MAAM,OAAO,GAAG;AAExC,UAAM,QAAQ;AAEd,UAAM,OAAO;AAGb,UAAM,mBAAmB;AAAA,MAAS,MAChC,MAAM,SAAS;AAAA,QAAO,aACpB,QAAQ,KAAK,YAAY,EAAE,SAAS,MAAM,YAAY,YAAY,CAAC;AAAA,MACrE;AAAA,IACF;AAEA,WAAO,CAAC,MAAU,WAAgB;AAChC,YAAM,yBAAyB,kBAAkB,aAAa;AAE9D,aAAQ,WAAW,GAAG,oBAAoB,OAAO,YAAY;AAAA,QAC3D,oBAAoB,OAAO,YAAY;AAAA,WACpC,WAAW,IAAI,GAAG,oBAAoB,WAAW,MAAM,YAAY,MAAM,cAAc,CAAC,UAAU;AACjG,mBAAQ,WAAW,GAAG,oBAAoB,OAAO;AAAA,cAC/C,OAAO;AAAA,cACP,KAAK;AAAA,YACP,GAAG,iBAAiB,KAAK,GAAG,CAAC;AAAA,UAC/B,CAAC,GAAG,GAAG;AAAA,QACT,CAAC;AAAA,QACD,aAAa,kBAAkB;AAAA,UAC7B,MAAM;AAAA,UACN,KAAK;AAAA,UACL,OAAO;AAAA,QACT,GAAG;AAAA,UACD,SAAS,SAAS,MAAM;AAAA,aACrB,WAAW,IAAI,GAAG,oBAAoB,WAAW,MAAM,YAAY,iBAAiB,OAAO,CAAC,YAAY;AACvG,qBAAQ,WAAW,GAAG,oBAAoB,OAAO;AAAA,gBAC/C,OAAO;AAAA,gBACP,KAAK,QAAQ;AAAA,cACf,GAAG;AAAA,gBACD,aAAa,wBAAwB;AAAA,kBACnC,aAAa;AAAA,kBACb,eAAe,CAAC,WAAiB,KAAK,eAAe,OAAO;AAAA,kBAC5D,iBAAiB,CAAC,WAAiB,KAAK,iBAAiB,OAAO;AAAA,gBAClE,GAAG,MAAM,GAAG,CAAC,eAAe,iBAAiB,iBAAiB,CAAC;AAAA,cACjE,CAAC;AAAA,YACH,CAAC,GAAG,GAAG;AAAA,UACT,CAAC;AAAA,UACD,GAAG;AAAA,QACL,CAAC;AAAA,MACH,CAAC;AAAA,IACH;AAAA,EACA;AAEA,CAAC;",
+        "names": []
+      }
+    },
+    {
+      "name": "vite:json",
+      "start": 1720823557748,
+      "end": 1720823557748,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1720823557748,
+      "end": 1720823557748,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1720823557748,
+      "end": 1720823557748,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1720823557748,
+      "end": 1720823557748,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1720823557748,
+      "end": 1720823557748,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1720823557748,
+      "end": 1720823557748,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1720823557748,
+      "end": 1720823557748,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1720823557748,
+      "end": 1720823557749,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1720823557749,
+      "end": 1720823557749,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1720823557749,
+      "end": 1720823557749,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1720823557749,
+      "end": 1720823557749,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1720823557749,
+      "end": 1720823557749,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1720823557749,
+      "end": 1720823557749,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1720823557749,
+      "end": 1720823557749,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1720823557749,
+      "end": 1720823557749,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1720823557749,
+      "end": 1720823557749,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1720823557749,
+      "end": 1720823557749,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1720823557749,
+      "end": 1720823557749,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1720823557749,
+      "end": 1720823557749,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1720823557749,
+      "end": 1720823557751,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1720823557752,
+      "end": 1720823557752,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1720823557752,
+      "end": 1720823557752,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1720823557752,
+      "end": 1720823557752,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1720823557752,
+      "end": 1720823557752,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "result": "import { default as __nuxt_component_0 } from \"C:/web/petProject/ContactManagement1/components/ContactItem.vue\";\nimport { defineComponent as _defineComponent } from \"vue\";\nimport { renderList as _renderList, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock, toDisplayString as _toDisplayString, createElementVNode as _createElementVNode, resolveComponent as _resolveComponent, createVNode as _createVNode, TransitionGroup as _TransitionGroup, withCtx as _withCtx } from \"vue\";\nconst _hoisted_1 = { class: \"contact-list__list\" };\nconst _hoisted_2 = { class: \"contact-list__title\" };\nimport { computed } from \"vue\";\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"ContactList\",\n  props: {\n    contacts: {},\n    contactTitle: {},\n    searchQuery: {}\n  },\n  emits: [\"editContact\", \"deleteContact\"],\n  setup(__props, { emit: __emit }) {\n    const props = __props;\n    const emit = __emit;\n    const filteredContacts = computed(\n      () => props.contacts.filter(\n        (contact) => contact.name.toLowerCase().includes(props.searchQuery.toLowerCase())\n      )\n    );\n    return (_ctx, _cache) => {\n      const _component_ContactItem = __nuxt_component_0;\n      return _openBlock(), _createElementBlock(\"div\", _hoisted_1, [\n        _createElementVNode(\"div\", _hoisted_2, [\n          (_openBlock(true), _createElementBlock(_Fragment, null, _renderList(props.contactTitle, (title) => {\n            return _openBlock(), _createElementBlock(\"div\", {\n              class: \"contact-list__title-item\",\n              key: title\n            }, _toDisplayString(title), 1);\n          }), 128))\n        ]),\n        _createVNode(_TransitionGroup, {\n          name: \"list\",\n          tag: \"div\",\n          class: \"contact-list__transition\"\n        }, {\n          default: _withCtx(() => [\n            (_openBlock(true), _createElementBlock(_Fragment, null, _renderList(filteredContacts.value, (contact) => {\n              return _openBlock(), _createElementBlock(\"div\", {\n                class: \"contact-list__items\",\n                key: contact.key\n              }, [\n                _createVNode(_component_ContactItem, {\n                  contactItem: contact,\n                  onEditContact: ($event) => emit(\"editContact\", contact),\n                  onDeleteContact: ($event) => emit(\"deleteContact\", contact)\n                }, null, 8, [\"contactItem\", \"onEditContact\", \"onDeleteContact\"])\n              ]);\n            }), 128))\n          ]),\n          _: 1\n        })\n      ]);\n    };\n  }\n});\n",
+      "start": 1720823557752,
+      "end": 1720823557752,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1720823557752,
+      "end": 1720823557752,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1720823557752,
+      "end": 1720823557753,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1720823557753,
+      "end": 1720823557753,
+      "order": "normal"
+    }
+  ]
+}

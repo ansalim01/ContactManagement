@@ -1,0 +1,222 @@
+{
+  "resolvedId": "C:/web/petProject/ContactManagement1/components/ContactItem.vue?vue&type=script&setup=true&lang.ts",
+  "transforms": [
+    {
+      "name": "vite:vue",
+      "result": "import { defineComponent as _defineComponent } from 'vue'\nimport { renderList as _renderList, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock, toDisplayString as _toDisplayString, resolveComponent as _resolveComponent, createVNode as _createVNode, createElementVNode as _createElementVNode } from \"vue\"\n\nconst _hoisted_1 = { class: \"contact-item__icons\" }\n\n\r\nimport type { InterfaceContactItem } from '@/types';\r\n\r\n\nexport default /*#__PURE__*/_defineComponent({\n  __name: 'ContactItem',\n  props: {\n    contactItem: {}\n  },\n  emits: [\"editContact\", \"deleteContact\"],\n  setup(__props: any, { emit: __emit }) {\n\r\nconst props = __props;\r\n\r\nconst emit = __emit;\r\n\r\nconst handleEdit = () => {\r\n  emit('editContact', props.contactItem);\r\n};\r\n\r\nconst handleDelete = () => {\r\n  emit('deleteContact', props.contactItem);\r\n};\r\n\nreturn (_ctx: any,_cache: any) => {\n  const _component_AppIcon = _resolveComponent(\"AppIcon\")!\n\n  return (_openBlock(), _createElementBlock(_Fragment, null, [\n    (_openBlock(true), _createElementBlock(_Fragment, null, _renderList(_ctx.contactItem, (item, key) => {\n      return (_openBlock(), _createElementBlock(\"div\", {\n        class: \"contact-item__item\",\n        key: key\n      }, _toDisplayString(item), 1))\n    }), 128)),\n    _createElementVNode(\"div\", _hoisted_1, [\n      _createVNode(_component_AppIcon, {\n        name: \"gear-wheel\",\n        width: 32,\n        height: 32,\n        color: \"teal\",\n        onClick: _cache[0] || (_cache[0] = ($event: any) => (handleEdit()))\n      }),\n      _createVNode(_component_AppIcon, {\n        name: \"trashcan\",\n        width: 32,\n        height: 32,\n        color: \"red\",\n        onClick: _cache[1] || (_cache[1] = ($event: any) => (handleDelete()))\n      })\n    ])\n  ], 64))\n}\n}\n\n})",
+      "start": 1720823557886,
+      "end": 1720823557886
+    },
+    {
+      "name": "nuxt:layer-aliasing",
+      "start": 1720823557886,
+      "end": 1720823557886,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:server-devonly:transform",
+      "start": 1720823557886,
+      "end": 1720823557886,
+      "order": "pre"
+    },
+    {
+      "name": "nuxt:client-fallback-auto-id",
+      "start": 1720823557886,
+      "end": 1720823557886,
+      "order": "pre"
+    },
+    {
+      "name": "vite:css",
+      "start": 1720823557886,
+      "end": 1720823557886,
+      "order": "normal"
+    },
+    {
+      "name": "vite:esbuild",
+      "result": "import { defineComponent as _defineComponent } from \"vue\";\nimport { renderList as _renderList, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock, toDisplayString as _toDisplayString, resolveComponent as _resolveComponent, createVNode as _createVNode, createElementVNode as _createElementVNode } from \"vue\";\nconst _hoisted_1 = { class: \"contact-item__icons\" };\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"ContactItem\",\n  props: {\n    contactItem: {}\n  },\n  emits: [\"editContact\", \"deleteContact\"],\n  setup(__props, { emit: __emit }) {\n    const props = __props;\n    const emit = __emit;\n    const handleEdit = () => {\n      emit(\"editContact\", props.contactItem);\n    };\n    const handleDelete = () => {\n      emit(\"deleteContact\", props.contactItem);\n    };\n    return (_ctx, _cache) => {\n      const _component_AppIcon = _resolveComponent(\"AppIcon\");\n      return _openBlock(), _createElementBlock(_Fragment, null, [\n        (_openBlock(true), _createElementBlock(_Fragment, null, _renderList(_ctx.contactItem, (item, key) => {\n          return _openBlock(), _createElementBlock(\"div\", {\n            class: \"contact-item__item\",\n            key\n          }, _toDisplayString(item), 1);\n        }), 128)),\n        _createElementVNode(\"div\", _hoisted_1, [\n          _createVNode(_component_AppIcon, {\n            name: \"gear-wheel\",\n            width: 32,\n            height: 32,\n            color: \"teal\",\n            onClick: _cache[0] || (_cache[0] = ($event) => handleEdit())\n          }),\n          _createVNode(_component_AppIcon, {\n            name: \"trashcan\",\n            width: 32,\n            height: 32,\n            color: \"red\",\n            onClick: _cache[1] || (_cache[1] = ($event) => handleDelete())\n          })\n        ])\n      ], 64);\n    };\n  }\n});\n",
+      "start": 1720823557889,
+      "end": 1720823557916,
+      "order": "normal",
+      "sourcemaps": {
+        "version": 3,
+        "sources": [
+          "C:/web/petProject/ContactManagement1/components/ContactItem.vue?vue&type=script&setup=true&lang.ts"
+        ],
+        "sourcesContent": [
+          "import { defineComponent as _defineComponent } from 'vue'\nimport { renderList as _renderList, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock, toDisplayString as _toDisplayString, resolveComponent as _resolveComponent, createVNode as _createVNode, createElementVNode as _createElementVNode } from \"vue\"\n\nconst _hoisted_1 = { class: \"contact-item__icons\" }\n\n\r\nimport type { InterfaceContactItem } from '@/types';\r\n\r\n\nexport default /*#__PURE__*/_defineComponent({\n  __name: 'ContactItem',\n  props: {\n    contactItem: {}\n  },\n  emits: [\"editContact\", \"deleteContact\"],\n  setup(__props: any, { emit: __emit }) {\n\r\nconst props = __props;\r\n\r\nconst emit = __emit;\r\n\r\nconst handleEdit = () => {\r\n  emit('editContact', props.contactItem);\r\n};\r\n\r\nconst handleDelete = () => {\r\n  emit('deleteContact', props.contactItem);\r\n};\r\n\nreturn (_ctx: any,_cache: any) => {\n  const _component_AppIcon = _resolveComponent(\"AppIcon\")!\n\n  return (_openBlock(), _createElementBlock(_Fragment, null, [\n    (_openBlock(true), _createElementBlock(_Fragment, null, _renderList(_ctx.contactItem, (item, key) => {\n      return (_openBlock(), _createElementBlock(\"div\", {\n        class: \"contact-item__item\",\n        key: key\n      }, _toDisplayString(item), 1))\n    }), 128)),\n    _createElementVNode(\"div\", _hoisted_1, [\n      _createVNode(_component_AppIcon, {\n        name: \"gear-wheel\",\n        width: 32,\n        height: 32,\n        color: \"teal\",\n        onClick: _cache[0] || (_cache[0] = ($event: any) => (handleEdit()))\n      }),\n      _createVNode(_component_AppIcon, {\n        name: \"trashcan\",\n        width: 32,\n        height: 32,\n        color: \"red\",\n        onClick: _cache[1] || (_cache[1] = ($event: any) => (handleDelete()))\n      })\n    ])\n  ], 64))\n}\n}\n\n})"
+        ],
+        "mappings": "AAAA,SAAS,mBAAmB,wBAAwB;AACpD,SAAS,cAAc,aAAa,YAAY,WAAW,aAAa,YAAY,sBAAsB,qBAAqB,mBAAmB,kBAAkB,oBAAoB,mBAAmB,eAAe,cAAc,sBAAsB,2BAA2B;AAEzR,MAAM,aAAa,EAAE,OAAO,sBAAsB;AAMlD,eAA4B,iCAAiB;AAAA,EAC3C,QAAQ;AAAA,EACR,OAAO;AAAA,IACL,aAAa,CAAC;AAAA,EAChB;AAAA,EACA,OAAO,CAAC,eAAe,eAAe;AAAA,EACtC,MAAM,SAAc,EAAE,MAAM,OAAO,GAAG;AAExC,UAAM,QAAQ;AAEd,UAAM,OAAO;AAEb,UAAM,aAAa,MAAM;AACvB,WAAK,eAAe,MAAM,WAAW;AAAA,IACvC;AAEA,UAAM,eAAe,MAAM;AACzB,WAAK,iBAAiB,MAAM,WAAW;AAAA,IACzC;AAEA,WAAO,CAAC,MAAU,WAAgB;AAChC,YAAM,qBAAqB,kBAAkB,SAAS;AAEtD,aAAQ,WAAW,GAAG,oBAAoB,WAAW,MAAM;AAAA,SACxD,WAAW,IAAI,GAAG,oBAAoB,WAAW,MAAM,YAAY,KAAK,aAAa,CAAC,MAAM,QAAQ;AACnG,iBAAQ,WAAW,GAAG,oBAAoB,OAAO;AAAA,YAC/C,OAAO;AAAA,YACP;AAAA,UACF,GAAG,iBAAiB,IAAI,GAAG,CAAC;AAAA,QAC9B,CAAC,GAAG,GAAG;AAAA,QACP,oBAAoB,OAAO,YAAY;AAAA,UACrC,aAAa,oBAAoB;AAAA,YAC/B,MAAM;AAAA,YACN,OAAO;AAAA,YACP,QAAQ;AAAA,YACR,OAAO;AAAA,YACP,SAAS,OAAO,CAAC,MAAM,OAAO,CAAC,IAAI,CAAC,WAAiB,WAAW;AAAA,UAClE,CAAC;AAAA,UACD,aAAa,oBAAoB;AAAA,YAC/B,MAAM;AAAA,YACN,OAAO;AAAA,YACP,QAAQ;AAAA,YACR,OAAO;AAAA,YACP,SAAS,OAAO,CAAC,MAAM,OAAO,CAAC,IAAI,CAAC,WAAiB,aAAa;AAAA,UACpE,CAAC;AAAA,QACH,CAAC;AAAA,MACH,GAAG,EAAE;AAAA,IACP;AAAA,EACA;AAEA,CAAC;",
+        "names": []
+      }
+    },
+    {
+      "name": "vite:json",
+      "start": 1720823557916,
+      "end": 1720823557916,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker",
+      "start": 1720823557916,
+      "end": 1720823557916,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue",
+      "start": 1720823557916,
+      "end": 1720823557917,
+      "order": "normal"
+    },
+    {
+      "name": "vite:vue-jsx",
+      "start": 1720823557917,
+      "end": 1720823557917,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1720823557917,
+      "end": 1720823557917,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:remove-plugin-metadata",
+      "start": 1720823557917,
+      "end": 1720823557917,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:chunk-error",
+      "start": 1720823557917,
+      "end": 1720823557917,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:components:imports",
+      "start": 1720823557917,
+      "end": 1720823557917,
+      "order": "normal"
+    },
+    {
+      "name": "replace",
+      "start": 1720823557917,
+      "end": 1720823557917,
+      "order": "normal"
+    },
+    {
+      "name": "ssr-styles",
+      "start": 1720823557917,
+      "end": 1720823557917,
+      "order": "normal"
+    },
+    {
+      "name": "vite:define",
+      "start": 1720823557917,
+      "end": 1720823557917,
+      "order": "normal"
+    },
+    {
+      "name": "vite:css-post",
+      "start": 1720823557917,
+      "end": 1720823557917,
+      "order": "normal"
+    },
+    {
+      "name": "vite:build-html",
+      "start": 1720823557917,
+      "end": 1720823557917,
+      "order": "normal"
+    },
+    {
+      "name": "vite:worker-import-meta-url",
+      "start": 1720823557917,
+      "end": 1720823557917,
+      "order": "normal"
+    },
+    {
+      "name": "vite:asset-import-meta-url",
+      "start": 1720823557917,
+      "end": 1720823557917,
+      "order": "normal"
+    },
+    {
+      "name": "commonjs",
+      "start": 1720823557917,
+      "end": 1720823557917,
+      "order": "normal"
+    },
+    {
+      "name": "vite:dynamic-import-vars",
+      "start": 1720823557917,
+      "end": 1720823557917,
+      "order": "normal"
+    },
+    {
+      "name": "vite:import-glob",
+      "start": 1720823557917,
+      "end": 1720823557917,
+      "order": "normal"
+    },
+    {
+      "name": "nuxt:composable-keys",
+      "start": 1720823557917,
+      "end": 1720823557917,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:imports-transform",
+      "start": 1720823557917,
+      "end": 1720823557918,
+      "order": "post"
+    },
+    {
+      "name": "unctx:transform",
+      "start": 1720823557918,
+      "end": 1720823557918,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:pages-macros-transform",
+      "start": 1720823557918,
+      "end": 1720823557918,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:runtime-paths-dep",
+      "start": 1720823557918,
+      "end": 1720823557918,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:route-injection-plugin",
+      "start": 1720823557918,
+      "end": 1720823557918,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:components-loader",
+      "result": "import { default as __nuxt_component_0 } from \"C:/web/petProject/ContactManagement1/components/AppIcon.vue\";\nimport { defineComponent as _defineComponent } from \"vue\";\nimport { renderList as _renderList, Fragment as _Fragment, openBlock as _openBlock, createElementBlock as _createElementBlock, toDisplayString as _toDisplayString, resolveComponent as _resolveComponent, createVNode as _createVNode, createElementVNode as _createElementVNode } from \"vue\";\nconst _hoisted_1 = { class: \"contact-item__icons\" };\nexport default /* @__PURE__ */ _defineComponent({\n  __name: \"ContactItem\",\n  props: {\n    contactItem: {}\n  },\n  emits: [\"editContact\", \"deleteContact\"],\n  setup(__props, { emit: __emit }) {\n    const props = __props;\n    const emit = __emit;\n    const handleEdit = () => {\n      emit(\"editContact\", props.contactItem);\n    };\n    const handleDelete = () => {\n      emit(\"deleteContact\", props.contactItem);\n    };\n    return (_ctx, _cache) => {\n      const _component_AppIcon = __nuxt_component_0;\n      return _openBlock(), _createElementBlock(_Fragment, null, [\n        (_openBlock(true), _createElementBlock(_Fragment, null, _renderList(_ctx.contactItem, (item, key) => {\n          return _openBlock(), _createElementBlock(\"div\", {\n            class: \"contact-item__item\",\n            key\n          }, _toDisplayString(item), 1);\n        }), 128)),\n        _createElementVNode(\"div\", _hoisted_1, [\n          _createVNode(_component_AppIcon, {\n            name: \"gear-wheel\",\n            width: 32,\n            height: 32,\n            color: \"teal\",\n            onClick: _cache[0] || (_cache[0] = ($event) => handleEdit())\n          }),\n          _createVNode(_component_AppIcon, {\n            name: \"trashcan\",\n            width: 32,\n            height: 32,\n            color: \"red\",\n            onClick: _cache[1] || (_cache[1] = ($event) => handleDelete())\n          })\n        ])\n      ], 64);\n    };\n  }\n});\n",
+      "start": 1720823557918,
+      "end": 1720823557918,
+      "order": "post"
+    },
+    {
+      "name": "nuxt:tree-shake-composables:transform",
+      "start": 1720823557918,
+      "end": 1720823557918,
+      "order": "post"
+    },
+    {
+      "name": "vite:build-import-analysis",
+      "start": 1720823557918,
+      "end": 1720823557918,
+      "order": "normal"
+    },
+    {
+      "name": "vite:reporter",
+      "start": 1720823557918,
+      "end": 1720823557918,
+      "order": "normal"
+    }
+  ]
+}
