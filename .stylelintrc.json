@@ -1,0 +1,11 @@
+{
+	"extends": [
+		"stylelint-config-standard-scss",
+		"stylelint-config-recommended-vue/scss",
+		"stylelint-config-recess-order"
+	],
+	"rules": {
+		"media-feature-range-notation": "prefix",
+		"selector-class-pattern": null
+	}
+}

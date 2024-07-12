@@ -1,0 +1,41 @@
+@forward './normalize.css';
+@forward 'variables.scss';
+
+* {
+	box-sizing: border-box;
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: 'Stratos', sans-serif;
+}
+
+@font-face {
+	font-family: 'Stratos';
+	font-style: normal;
+	font-weight: 400;
+	src: local('Stratos Regular'),
+		url('@/assets/fonts/Stratos-Regular.woff2') format('woff2'),
+		url('@/assets/fonts/Stratos-Regular.woff') format('woff');
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Stratos';
+	font-style: normal;
+	font-weight: 500;
+	src: local('Stratos Medium'),
+		url('@/assets/fonts/Stratos-Medium.woff2') format('woff2'),
+		url('@/assets/fonts/Stratos-Medium.woff') format('woff');
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Stratos';
+	font-style: normal;
+	font-weight: 600;
+	src: local('Stratos SemiBold'),
+		url('@/assets/fonts/Stratos-SemiBold.woff2') format('woff2'),
+		url('@/assets/fonts/Stratos-SemiBold.woff') format('woff');
+	font-display: swap;
+}
